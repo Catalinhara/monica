@@ -4,6 +4,64 @@ Checklist manual por fase. Marca cada ítem al validarlo en local (`npm run dev`
 
 ---
 
+## Sesión rápida local (empezar aquí)
+
+### Preparación
+
+```bash
+cd romantic-journey
+npm run dev
+```
+
+Abre http://localhost:3000  
+Chrome DevTools → modo móvil (~375px) para el player.
+
+### Ruta A — Player (~15 min)
+
+| # | Qué hacer | OK si… |
+|---|-----------|--------|
+| A1 | `/` → **Empezar el viaje** | Entras a `/play` con mapa de 9 niveles |
+| A2 | Solo Level 0 habilitado | El resto aparecen bloqueados |
+| A3 | Completa Level 0 (escenas) | Vuelves al mapa; Level 1 desbloqueado |
+| A4 | Memory → revela las 4 | CTA se activa y avanza |
+| A5 | Quiz → responde (incluso mal) | Feedback y puedes seguir |
+| A6 | Sorting → ordena y comprueba | Timeline → continuar |
+| A7 | Compatibility | Barras tras “Analyzing…” |
+| A8 | Connection + Dance (8 toques) + Future | Mecánicas distintas funcionan |
+| A9 | Final: pulsa **No** varias veces | Mensajes + botón se mueve |
+| A10 | Pulsa **Sí** | Celebración → recompensa |
+| A11 | Refresca `/play` a mitad de viaje | Progreso sigue guardado |
+| A12 | **Reiniciar progreso** | Solo Level 0 disponible |
+| A13 | Toggle **Sonido on/off** | Preferencia se mantiene al refrescar |
+
+### Ruta B — Admin (~10 min)
+
+| # | Qué hacer | OK si… |
+|---|-----------|--------|
+| B1 | Abre `/admin` | Panel **Experiencia** + Save / Publish / Preview |
+| B2 | Cambia título o nombre destinataria | Aparece “Cambios sin guardar” |
+| B3 | **Save draft** → **Preview** | `/play?preview=1` con banner PREVIEW |
+| B4 | En preview, el nombre/título refleja el draft | Borrador visible sin publicar |
+| B5 | Vuelve a `/admin`, edita un nivel (JSON/título) | Se guarda en draft |
+| B6 | **Publish** | Mensaje de versión |
+| B7 | Abre `/play` (sin preview) | Ves la versión publicada |
+| B8 | Panel Final: cambia un mensaje del No | Se refleja en preview/play tras save/publish |
+| B9 | Versiones → Restaurar (si hay snapshot) | Borrador vuelve al snapshot |
+
+### Smoke automático (opcional)
+
+```bash
+npm run test        # unitarios
+npm run test:e2e    # 6 smoke Playwright
+```
+
+### Notas
+
+- Si el progreso o el admin se “contaminan”, en DevTools → Application → Local Storage → borra keys `rj:*`, o usa **Reiniciar progreso** / Reset seed en Versiones.
+- Cierra otros `npm run dev` viejos antes de E2E.
+
+---
+
 ## Fase 0 — Scaffold
 
 | # | Prueba | Resultado esperado |
