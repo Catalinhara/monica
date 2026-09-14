@@ -1,0 +1,67 @@
+{
+  "id": "exp-demo-001",
+  "title": "Romantic Journey",
+  "recipientName": "Tú",
+  "status": "draft",
+  "version": 1,
+  "theme": {
+    "id": "romantic-night",
+    "name": "Romantic Night",
+    "colors": {
+      "background": "#0f0a12",
+      "foreground": "#f5eef6",
+      "accent": "#c45c7a",
+      "muted": "#6b5a6e"
+    }
+  },
+  "levels": [
+    {
+      "id": "level-0",
+      "order": 0,
+      "title": "El comienzo",
+      "subtitle": "The Beginning",
+      "type": "story",
+      "active": true,
+      "content": [
+        {
+          "id": "scene-0-1",
+          "type": "text",
+          "content": {
+            "text": "He preparado algo para ti."
+          },
+          "animation": {
+            "preset": "fade",
+            "duration": 800,
+            "delay": 0,
+            "easing": "easeOut"
+          }
+        }
+      ],
+      "completion": {
+        "type": "manual"
+      }
+    }
+  ],
+  "finalQuestion": {
+    "prompt": "¿Quieres ser mi novia?",
+    "yesLabel": "Sí",
+    "noLabel": "No",
+    "noBehavior": {
+      "enabled": true,
+      "startAfterAttempts": 1,
+      "messages": [
+        "¿Segura?",
+        "¿Segurísima?",
+        "Creo que deberías pensarlo otra vez."
+      ],
+      "movementEnabled": true,
+      "movementIntensity": 0.6,
+      "maxDistance": 120
+    }
+  },
+  "celebration": {
+    "message": "Entonces es oficial.",
+    "secondaryMessage": "Bienvenida a nuestra siguiente aventura.",
+    "effects": ["particles", "hearts", "confetti", "sound"]
+  }
+}
