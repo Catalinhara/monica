@@ -72,12 +72,15 @@ Checklist manual por fase. Marca cada ítem al validarlo en local (`npm run dev`
 
 | # | Prueba | Resultado esperado |
 |---|--------|--------------------|
-| 4.1 | `/admin` lista / crea experiencia | CRUD básico local |
-| 4.2 | Editor de nivel + escenas | Reordenar, tipos, textos |
-| 4.3 | Asset manager | Subir/asociar (o mock local) |
-| 4.4 | Preview | Misma experiencia que `/play` |
-| 4.5 | Draft vs Publish | Draft no afecta published |
-| 4.6 | Desktop layout | Sidebar niveles + panel editor |
+| 4.1 | Abrir `/admin` (desktop) | Sidebar + toolbar Save/Publish/Preview |
+| 4.2 | Editar título / destinataria / tema | Dirty state; Save draft persiste |
+| 4.3 | Seleccionar nivel | Editor de metadatos + JSON de content |
+| 4.4 | Add / duplicate / reorder / delete nivel | Lista lateral se actualiza |
+| 4.5 | Preview | `/play?preview=1` muestra borrador con banner |
+| 4.6 | Publish | Mensaje de versión; `/play` sin preview usa published |
+| 4.7 | Restaurar versión | Borrador vuelve al snapshot |
+| 4.8 | Pregunta final / No messages | Editable desde panel Final |
+| 4.9 | Assets panel | Stub visible (placeholders) |
 
 ---
 

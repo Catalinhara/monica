@@ -43,8 +43,8 @@ npm run lint
 0. Scaffold — hecho
 1. Experience Engine — hecho
 2. Visual System — hecho
-3. First Experience — niveles, pregunta final, celebración
-4. Admin Editor
+3. First Experience — hecho
+4. Admin Editor — draft/publish/preview + CMS local
 5. Polish
 
 Ver checklist manual: [TEST_PLAN.md](./TEST_PLAN.md)

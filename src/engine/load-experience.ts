@@ -1,18 +1,18 @@
 import type { Experience } from "@/types";
-import demoExperience from "../../content/experiences/demo.json";
+import { resolvePlayExperience, loadDraftExperience, getSeedExperience } from "@/lib/experience-repository";
 
-const catalog: Record<string, Experience> = {
-  "exp-demo-001": demoExperience as Experience,
-};
-
-export function loadExperience(id = "exp-demo-001"): Experience {
-  const experience = catalog[id];
-  if (!experience) {
-    throw new Error(`Experience not found: ${id}`);
+export function loadExperience(
+  id = "exp-demo-001",
+  options?: { preview?: boolean },
+): Experience {
+  if (options?.preview) {
+    const draft = loadDraftExperience(id);
+    if (draft) return structuredClone(draft);
+    return getSeedExperience(id);
   }
-  return structuredClone(experience);
+  return resolvePlayExperience(id);
 }
 
 export function listExperienceIds(): string[] {
-  return Object.keys(catalog);
+  return ["exp-demo-001"];
 }

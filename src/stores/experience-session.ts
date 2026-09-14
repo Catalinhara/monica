@@ -27,7 +27,7 @@ type ExperienceSessionState = {
   sceneIndex: number;
   phase: SessionPhase;
   hydrated: boolean;
-  boot: (experienceId?: string) => void;
+  boot: (experienceId?: string, options?: { preview?: boolean }) => void;
   openMap: () => void;
   enterLevel: (levelId: string) => boolean;
   nextScene: () => void;
@@ -61,9 +61,13 @@ export const useExperienceSession = create<ExperienceSessionState>((set, get) =>
   phase: "boot",
   hydrated: false,
 
-  boot: (experienceId = "exp-demo-001") => {
-    const experience = loadExperience(experienceId);
-    const saved = loadSavedProgress(experience.id);
+  boot: (experienceId = "exp-demo-001", options) => {
+    const experience = loadExperience(experienceId, {
+      preview: options?.preview,
+    });
+    const saved = options?.preview
+      ? {}
+      : loadSavedProgress(experience.id);
     const progress =
       Object.keys(saved).length > 0
         ? reconcileProgress(experience, saved)

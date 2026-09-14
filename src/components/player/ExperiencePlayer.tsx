@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useExperienceSession } from "@/stores/experience-session";
 import { ThemeScope } from "@/components/shared/ThemeScope";
@@ -10,14 +11,16 @@ import { CelebrationScreen } from "./CelebrationScreen";
 import { JourneyComplete } from "./JourneyComplete";
 
 export function ExperiencePlayer() {
+  const searchParams = useSearchParams();
+  const preview = searchParams.get("preview") === "1";
   const boot = useExperienceSession((s) => s.boot);
   const hydrated = useExperienceSession((s) => s.hydrated);
   const phase = useExperienceSession((s) => s.phase);
   const experience = useExperienceSession((s) => s.experience);
 
   useEffect(() => {
-    boot();
-  }, [boot]);
+    boot("exp-demo-001", { preview });
+  }, [boot, preview]);
 
   if (!hydrated || !experience) {
     return (
@@ -32,6 +35,11 @@ export function ExperiencePlayer() {
       themeId={experience.theme.id}
       className="flex min-h-full flex-1 flex-col"
     >
+      {preview && (
+        <div className="sticky top-0 z-30 border-b border-[var(--accent)]/30 bg-[var(--accent-soft)] px-4 py-2 text-center text-xs tracking-wide text-[var(--accent)]">
+          PREVIEW · borrador del Admin Editor (progreso no se persiste)
+        </div>
+      )}
       <AnimatePresence mode="wait">
         {phase === "map" && (
           <motion.div
