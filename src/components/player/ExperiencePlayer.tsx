@@ -36,8 +36,11 @@ export function ExperiencePlayer() {
       className="flex min-h-full flex-1 flex-col"
     >
       {preview && (
-        <div className="sticky top-0 z-30 border-b border-[var(--accent)]/30 bg-[var(--accent-soft)] px-4 py-2 text-center text-xs tracking-wide text-[var(--accent)]">
-          PREVIEW · borrador del Admin Editor (progreso no se persiste)
+        <div
+          role="status"
+          className="sticky top-0 z-30 flex flex-wrap items-center justify-center gap-3 border-b border-[var(--accent)]/30 bg-[var(--accent-soft)] px-4 py-2 text-center text-xs tracking-wide text-[var(--accent)]"
+        >
+          <span>PREVIEW · borrador del Admin Editor (progreso no se persiste)</span>
         </div>
       )}
       <AnimatePresence mode="wait">

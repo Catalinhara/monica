@@ -6,29 +6,43 @@ import {
   getStatusLabel,
 } from "@/engine";
 import { useExperienceSession } from "@/stores/experience-session";
+import { usePrefsStore } from "@/stores/prefs-store";
 import { Button } from "@/components/shared/Button";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Surface } from "@/components/shared/Surface";
+import { SoundToggle } from "@/components/shared/SoundToggle";
 
 export function JourneyMap() {
   const experience = useExperienceSession((s) => s.experience)!;
   const progress = useExperienceSession((s) => s.progress);
   const enterLevel = useExperienceSession((s) => s.enterLevel);
   const resetJourney = useExperienceSession((s) => s.resetJourney);
+  const play = usePrefsStore((s) => s.play);
 
   const levels = getOrderedLevels(experience);
   const percent = getJourneyProgressPercent(experience, progress);
 
   return (
-    <main className="mx-auto flex w-full max-w-lg flex-1 flex-col gap-9 px-6 py-10">
+    <main className="mx-auto flex w-full max-w-lg flex-1 flex-col gap-9 px-4 py-8 sm:px-6 sm:py-10">
+      <div className="flex justify-end">
+        <SoundToggle />
+      </div>
+
       <PageHeader
         eyebrow={experience.title}
         title={`Hola, ${experience.recipientName}`}
         description={`Progreso del viaje: ${percent}%`}
       >
-        <div className="mt-1 h-1.5 w-full max-w-sm overflow-hidden rounded-full bg-white/10">
+        <div
+          className="mt-1 h-1.5 w-full max-w-sm overflow-hidden rounded-full bg-white/10"
+          role="progressbar"
+          aria-valuenow={percent}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label="Progreso del viaje"
+        >
           <div
-            className="h-full rounded-full bg-[var(--accent)] transition-all duration-500 ease-[var(--ease-out-expo)]"
+            className="h-full rounded-full bg-[var(--accent)] transition-all duration-500 ease-[var(--ease-out-expo)] motion-reduce:transition-none"
             style={{
               width: `${percent}%`,
               boxShadow: "0 0 16px var(--glow)",
@@ -37,7 +51,7 @@ export function JourneyMap() {
         </div>
       </PageHeader>
 
-      <ol className="flex flex-col gap-3">
+      <ol className="flex flex-col gap-3" aria-label="Lista de niveles">
         {levels.map((level, index) => {
           const status = progress[level.id]?.status ?? "locked";
           const locked = status === "locked";
@@ -47,7 +61,12 @@ export function JourneyMap() {
               <button
                 type="button"
                 disabled={locked}
-                onClick={() => enterLevel(level.id)}
+                aria-disabled={locked}
+                aria-label={`${level.title}, ${getStatusLabel(status)}`}
+                onClick={() => {
+                  play("tap");
+                  enterLevel(level.id);
+                }}
                 className="group w-full text-left disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <Surface
@@ -72,7 +91,12 @@ export function JourneyMap() {
         })}
       </ol>
 
-      <Button variant="ghost" size="sm" onClick={resetJourney} className="self-start">
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={resetJourney}
+        className="self-start"
+      >
         Reiniciar progreso
       </Button>
     </main>

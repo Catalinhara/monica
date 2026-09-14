@@ -1,12 +1,13 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   getSceneCursor,
   getSceneProgressPercent,
   isLevelCompletable,
 } from "@/engine";
 import type { Experience, Level } from "@/types";
+import { usePrefsStore } from "@/stores/prefs-store";
 import { Button } from "@/components/shared/Button";
 import { LevelShell } from "../LevelShell";
 import { SceneView } from "../SceneView";
@@ -33,6 +34,8 @@ export function StoryLevel({
   const cursor = getSceneCursor(level, sceneIndex);
   const scenePercent = getSceneProgressPercent(level, sceneIndex);
   const canFinish = isLevelCompletable(level, sceneIndex);
+  const play = usePrefsStore((s) => s.play);
+  const reduceMotion = useReducedMotion();
 
   return (
     <LevelShell
@@ -46,10 +49,22 @@ export function StoryLevel({
           {cursor.scene && (
             <motion.div
               key={cursor.scene.id}
-              initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: -14, filter: "blur(4px)" }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              initial={
+                reduceMotion
+                  ? { opacity: 0 }
+                  : { opacity: 0, y: 20, filter: "blur(4px)" }
+              }
+              animate={
+                reduceMotion
+                  ? { opacity: 1 }
+                  : { opacity: 1, y: 0, filter: "blur(0px)" }
+              }
+              exit={
+                reduceMotion
+                  ? { opacity: 0 }
+                  : { opacity: 0, y: -14, filter: "blur(4px)" }
+              }
+              transition={{ duration: reduceMotion ? 0.15 : 0.45, ease: [0.16, 1, 0.3, 1] }}
             >
               <SceneView scene={cursor.scene} />
             </motion.div>
@@ -62,9 +77,23 @@ export function StoryLevel({
           Atrás
         </Button>
         {cursor.isLast && canFinish ? (
-          <Button onClick={onComplete}>Continuar</Button>
+          <Button
+            onClick={() => {
+              play("success");
+              onComplete();
+            }}
+          >
+            Continuar
+          </Button>
         ) : (
-          <Button onClick={onNext}>Continuar</Button>
+          <Button
+            onClick={() => {
+              play("advance");
+              onNext();
+            }}
+          >
+            Continuar
+          </Button>
         )}
       </footer>
     </LevelShell>

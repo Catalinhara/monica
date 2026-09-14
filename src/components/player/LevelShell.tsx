@@ -51,9 +51,16 @@ export function LevelShell({
       )}
 
       {!hideProgress && !minimal && (
-        <div className="mb-6 h-1 overflow-hidden rounded-full bg-white/10">
+        <div
+          className="mb-6 h-1 overflow-hidden rounded-full bg-white/10"
+          role="progressbar"
+          aria-valuenow={Math.round(progressPercent)}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label={`Progreso del nivel ${level.title}`}
+        >
           <div
-            className="h-full rounded-full bg-[var(--accent)] transition-all duration-500 ease-[var(--ease-out-expo)]"
+            className="h-full rounded-full bg-[var(--accent)] transition-all duration-500 ease-[var(--ease-out-expo)] motion-reduce:transition-none"
             style={{
               width: `${progressPercent}%`,
               boxShadow: "0 0 12px var(--glow)",

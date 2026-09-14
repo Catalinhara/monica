@@ -20,7 +20,7 @@ const sizeClass: Record<Size, string> = {
 };
 
 const baseClass =
-  "inline-flex items-center justify-center gap-2 rounded-[var(--radius-pill)] font-medium transition-[background,border-color,color,box-shadow,filter,transform] duration-300 ease-[var(--ease-out-expo)] disabled:pointer-events-none disabled:opacity-35";
+  "inline-flex items-center justify-center gap-2 rounded-[var(--radius-pill)] font-medium transition-[background,border-color,color,box-shadow,filter,transform] duration-300 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-35 motion-reduce:transform-none motion-reduce:transition-colors";
 
 type ButtonProps = {
   variant?: Variant;

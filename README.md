@@ -44,8 +44,8 @@ npm run lint
 1. Experience Engine — hecho
 2. Visual System — hecho
 3. First Experience — hecho
-4. Admin Editor — draft/publish/preview + CMS local
-5. Polish
+4. Admin Editor — hecho
+5. Polish — sonido, partículas, a11y, responsive, E2E
 
 Ver checklist manual: [TEST_PLAN.md](./TEST_PLAN.md)
 

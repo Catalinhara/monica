@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import type { Experience, Level } from "@/types";
+import { usePrefsStore } from "@/stores/prefs-store";
 import { Button } from "@/components/shared/Button";
 import { LevelShell } from "../LevelShell";
 
@@ -16,12 +17,14 @@ type Props = {
 export function FinalLevel({ experience, level, onAccept, onExit }: Props) {
   const question = experience.finalQuestion;
   const behavior = question.noBehavior;
+  const play = usePrefsStore((s) => s.play);
   const [noAttempts, setNoAttempts] = useState(0);
   const [message, setMessage] = useState<string | null>(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [step, setStep] = useState(0);
 
   function handleNo() {
+    play("tap");
     const nextAttempts = noAttempts + 1;
     setNoAttempts(nextAttempts);
 
@@ -59,7 +62,14 @@ export function FinalLevel({ experience, level, onAccept, onExit }: Props) {
             <p className="font-display text-3xl leading-snug sm:text-4xl">
               Has llegado al último nivel.
             </p>
-            <Button onClick={() => setStep(1)}>…</Button>
+            <Button
+              onClick={() => {
+                play("advance");
+                setStep(1);
+              }}
+            >
+              …
+            </Button>
           </>
         )}
 
@@ -68,7 +78,14 @@ export function FinalLevel({ experience, level, onAccept, onExit }: Props) {
             <p className="font-display text-3xl leading-snug sm:text-4xl">
               Y este no tiene respuesta correcta.
             </p>
-            <Button onClick={() => setStep(2)}>…</Button>
+            <Button
+              onClick={() => {
+                play("advance");
+                setStep(2);
+              }}
+            >
+              …
+            </Button>
           </>
         )}
 
@@ -83,11 +100,23 @@ export function FinalLevel({ experience, level, onAccept, onExit }: Props) {
             </motion.p>
 
             {message && (
-              <p className="text-sm text-[var(--accent)]">{message}</p>
+              <p
+                className="text-sm text-[var(--accent)]"
+                role="status"
+                aria-live="polite"
+              >
+                {message}
+              </p>
             )}
 
             <div className="relative mt-4 flex min-h-28 w-full max-w-sm items-center justify-center gap-4">
-              <Button size="lg" onClick={onAccept}>
+              <Button
+                size="lg"
+                onClick={() => {
+                  play("celebrate");
+                  onAccept();
+                }}
+              >
                 {question.yesLabel}
               </Button>
               <motion.div

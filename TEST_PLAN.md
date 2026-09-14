@@ -88,12 +88,15 @@ Checklist manual por fase. Marca cada ítem al validarlo en local (`npm run dev`
 
 | # | Prueba | Resultado esperado |
 |---|--------|--------------------|
-| 5.1 | Sonido on/off | Respeta preferencia |
-| 5.2 | Partículas / microinteracciones | Sin bajar de ~60fps en móvil medio |
-| 5.3 | Accesibilidad básica | Focus visible, contraste, labels |
-| 5.4 | Responsive completo | Sin overflow horizontal |
-| 5.5 | E2E Playwright smoke | `npm run test:e2e` verde |
-| 5.6 | Lighthouse / LCP razonable | Sin regresiones graves |
+| 5.1 | Toggle Sonido on/off en mapa | Preferencia persiste al refrescar |
+| 5.2 | Avanzar escenas / completar | Cues de audio suaves (si sonido on) |
+| 5.3 | Celebración | Partículas + cue celebrate; respeta reduced-motion |
+| 5.4 | Tab / focus visible | Outline accent en controles |
+| 5.5 | Skip link | “Saltar al contenido” al enfocar con Tab |
+| 5.6 | Mobile ~375px | Player usable; admin usable (lista compacta) |
+| 5.7 | `npm run test` | Unit tests verdes |
+| 5.8 | `npx playwright install` + `npm run test:e2e` | Smoke home/play/admin |
+| 5.9 | `npm run build` | Build OK |
 
 ---
 
