@@ -19,7 +19,11 @@ export function ExperiencePlayer() {
   const experience = useExperienceSession((s) => s.experience);
 
   useEffect(() => {
-    boot("exp-demo-001", { preview });
+    try {
+      boot("exp-demo-001", { preview });
+    } catch (error) {
+      console.error("Failed to boot experience", error);
+    }
   }, [boot, preview]);
 
   if (!hydrated || !experience) {

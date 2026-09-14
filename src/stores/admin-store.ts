@@ -75,7 +75,8 @@ export const useAdminStore = create<AdminState>((set, get) => ({
     const draft = resolveEditableExperience();
     set({
       draft,
-      selectedLevelId: draft.levels[0]?.id ?? null,
+      selectedLevelId: null,
+      panel: "experience",
       versions: listVersions(draft.id),
       dirty: false,
       message: null,
