@@ -1,23 +1,113 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f0a12;
-  --foreground: #f5eef6;
-  --accent: #c45c7a;
-  --muted: #9a8a9e;
+  --background: #120810;
+  --background-alt: #1a0f18;
+  --foreground: #f7eef4;
+  --accent: #d46a86;
+  --accent-soft: rgba(212, 106, 134, 0.18);
+  --muted: #b39aab;
+  --border: rgba(247, 238, 244, 0.12);
+  --glow: rgba(212, 106, 134, 0.35);
+  --atmosphere-gradient: radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      rgba(212, 106, 134, 0.22),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 100% 100%,
+      rgba(88, 40, 70, 0.45),
+      transparent 50%
+    ),
+    linear-gradient(165deg, #120810 0%, #1a0f18 45%, #0c070b 100%);
+  --orb-1: rgba(212, 106, 134, 0.2);
+  --orb-2: rgba(90, 45, 80, 0.35);
+  --grain-opacity: 0.06;
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-pill: 999px;
+  --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --color-muted: var(--muted);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-border: var(--border);
+  --color-glow: var(--glow);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
+  min-height: 100%;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@keyframes float-orb {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(2%, -3%) scale(1.05);
+  }
+}
+
+@keyframes grain-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-2%, -2%);
+  }
+}
+
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

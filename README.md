@@ -40,12 +40,14 @@ npm run lint
 
 ## Fases
 
-0. Scaffold (este repo)
-1. Experience Engine
-2. Visual System
-3. First Experience (niveles)
+0. Scaffold — hecho
+1. Experience Engine — hecho
+2. Visual System — hecho
+3. First Experience — niveles, pregunta final, celebración
 4. Admin Editor
 5. Polish
+
+Ver checklist manual: [TEST_PLAN.md](./TEST_PLAN.md)
 
 ## Documentación de origen
 

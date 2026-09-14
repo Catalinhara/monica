@@ -22,6 +22,12 @@ export type CelebrationConfig = {
   effects: Array<"particles" | "hearts" | "photos" | "lights" | "confetti" | "sound" | "vibration">;
 };
 
+export type FinalReward = {
+  title: string;
+  body: string;
+  cta?: string;
+};
+
 export type ExperienceStatus = "draft" | "preview" | "published";
 
 export type Experience = {
@@ -32,6 +38,7 @@ export type Experience = {
   levels: Level[];
   finalQuestion: FinalQuestion;
   celebration: CelebrationConfig;
+  finalReward?: FinalReward;
   status?: ExperienceStatus;
   version?: number;
 };

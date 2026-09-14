@@ -3,15 +3,19 @@
   "title": "Romantic Journey",
   "recipientName": "Tú",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "theme": {
     "id": "romantic-night",
     "name": "Romantic Night",
     "colors": {
-      "background": "#0f0a12",
-      "foreground": "#f5eef6",
-      "accent": "#c45c7a",
-      "muted": "#6b5a6e"
+      "background": "#120810",
+      "foreground": "#f7eef4",
+      "accent": "#d46a86",
+      "muted": "#b39aab"
+    },
+    "typography": {
+      "display": "Cormorant Garamond",
+      "body": "Manrope"
     }
   },
   "levels": [
@@ -26,20 +30,294 @@
         {
           "id": "scene-0-1",
           "type": "text",
+          "content": { "text": "He preparado algo para ti." }
+        },
+        {
+          "id": "scene-0-2",
+          "type": "text",
           "content": {
-            "text": "He preparado algo para ti."
-          },
-          "animation": {
-            "preset": "fade",
-            "duration": 800,
-            "delay": 0,
-            "easing": "easeOut"
+            "text": "Pero para llegar al final tendrás que superar algunos niveles."
+          }
+        },
+        {
+          "id": "scene-0-3",
+          "type": "text",
+          "content": {
+            "text": "¿Lista para comenzar la aventura?",
+            "cta": "Comenzar aventura"
           }
         }
       ],
-      "completion": {
-        "type": "manual"
-      }
+      "completion": { "type": "all-scenes" }
+    },
+    {
+      "id": "level-1",
+      "order": 1,
+      "title": "Descubrirnos",
+      "subtitle": "Memories",
+      "type": "memory",
+      "active": true,
+      "content": [
+        {
+          "id": "mem-1",
+          "type": "text",
+          "content": {
+            "title": "El primer mensaje",
+            "description": "Una conversación que no quería terminar."
+          }
+        },
+        {
+          "id": "mem-2",
+          "type": "text",
+          "content": {
+            "title": "La primera risa",
+            "description": "Ese momento en el que todo se volvió fácil."
+          }
+        },
+        {
+          "id": "mem-3",
+          "type": "text",
+          "content": {
+            "title": "Un café",
+            "description": "Horas que pasaron como minutos."
+          }
+        },
+        {
+          "id": "mem-4",
+          "type": "text",
+          "content": {
+            "title": "Hoy",
+            "description": "Y aquí estamos, escribiendo el siguiente capítulo."
+          }
+        }
+      ],
+      "completion": { "type": "manual" },
+      "reward": { "type": "memory", "content": "+1 memory" }
+    },
+    {
+      "id": "level-2",
+      "order": 2,
+      "title": "¿Cuánto me conoces?",
+      "subtitle": "Quiz",
+      "type": "quiz",
+      "active": true,
+      "content": [
+        {
+          "id": "q-1",
+          "type": "question",
+          "content": {
+            "question": "¿Qué preferiría para una cita perfecta?",
+            "options": [
+              { "id": "a", "label": "Cena tranquila" },
+              { "id": "b", "label": "Bailar hasta tarde" },
+              { "id": "c", "label": "Una escapada improvisada" }
+            ],
+            "correctOptionId": "b",
+            "feedbackCorrect": "Sabía que lo clavabas.",
+            "feedbackWrong": "Casi… pero me gusta cómo piensas."
+          }
+        },
+        {
+          "id": "q-2",
+          "type": "question",
+          "content": {
+            "question": "Mi snack secreto favorito es…",
+            "options": [
+              { "id": "a", "label": "Chocolate" },
+              { "id": "b", "label": "Patatas" },
+              { "id": "c", "label": "Fruta a las 2 a.m." }
+            ],
+            "correctOptionId": "a",
+            "feedback": "Detalles que importan."
+          }
+        },
+        {
+          "id": "q-3",
+          "type": "question",
+          "content": {
+            "question": "Si pudiéramos teletransportarnos ahora mismo…",
+            "options": [
+              { "id": "a", "label": "A la playa" },
+              { "id": "b", "label": "A una pista de baile" },
+              { "id": "c", "label": "A casa, juntos" }
+            ],
+            "feedback": "Cualquier destino contigo suena bien."
+          }
+        }
+      ],
+      "completion": { "type": "manual" }
+    },
+    {
+      "id": "level-3",
+      "order": 3,
+      "title": "Memory Puzzle",
+      "subtitle": "Nuestra historia en orden",
+      "type": "sorting",
+      "active": true,
+      "content": [
+        {
+          "id": "sort-bundle",
+          "type": "animation",
+          "content": {
+            "prompt": "Pon nuestra historia en orden.",
+            "items": [
+              {
+                "id": "s1",
+                "label": "FIRST MEETING",
+                "correctOrder": 0
+              },
+              {
+                "id": "s2",
+                "label": "FIRST DATE",
+                "correctOrder": 1
+              },
+              {
+                "id": "s3",
+                "label": "FIRST MEMORY",
+                "correctOrder": 2
+              },
+              {
+                "id": "s4",
+                "label": "TODAY",
+                "correctOrder": 3
+              }
+            ]
+          }
+        }
+      ],
+      "completion": { "type": "manual" }
+    },
+    {
+      "id": "level-4",
+      "order": 4,
+      "title": "Compatibility Lab",
+      "subtitle": "Relationship Analysis",
+      "type": "compatibility",
+      "active": true,
+      "content": [
+        {
+          "id": "compat",
+          "type": "statistic",
+          "content": {
+            "title": "RELATIONSHIP ANALYSIS",
+            "analyzingLabel": "Analyzing…",
+            "stats": [
+              { "name": "Humor", "percent": 97 },
+              { "name": "Chemistry", "percent": 99 },
+              { "name": "Dance", "percent": 95 },
+              { "name": "Adventure", "percent": 96 },
+              { "name": "Chaos", "percent": 100 }
+            ]
+          }
+        }
+      ],
+      "completion": { "type": "manual" }
+    },
+    {
+      "id": "level-5",
+      "order": 5,
+      "title": "The Connection",
+      "subtitle": "Más despacio",
+      "type": "story",
+      "active": true,
+      "content": [
+        {
+          "id": "c-1",
+          "type": "text",
+          "content": {
+            "text": "Dos caminos que empezaron en lugares distintos."
+          }
+        },
+        {
+          "id": "c-2",
+          "type": "text",
+          "content": {
+            "text": "Rumanía. España. Casualidades que no lo fueron tanto."
+          }
+        },
+        {
+          "id": "c-3",
+          "type": "text",
+          "content": {
+            "text": "A veces la conexión no se explica. Se siente."
+          }
+        }
+      ],
+      "completion": { "type": "all-scenes" }
+    },
+    {
+      "id": "level-6",
+      "order": 6,
+      "title": "Dance",
+      "subtitle": "El mismo ritmo",
+      "type": "interactive",
+      "active": true,
+      "content": [
+        {
+          "id": "dance",
+          "type": "animation",
+          "content": {
+            "prompt": "Algunas personas simplemente encuentran el mismo ritmo.",
+            "afterPrompt": "Creo que nosotros lo encontramos.",
+            "targetTaps": 8
+          }
+        }
+      ],
+      "completion": { "type": "interaction-count", "threshold": 8 }
+    },
+    {
+      "id": "level-7",
+      "order": 7,
+      "title": "Future",
+      "subtitle": "Lo que podría venir",
+      "type": "choice",
+      "active": true,
+      "content": [
+        {
+          "id": "future",
+          "type": "choice",
+          "content": {
+            "prompt": "¿Qué hacemos primero?",
+            "options": [
+              {
+                "id": "dinner",
+                "label": "Cena",
+                "emoji": "🍷",
+                "reply": "Buena elección."
+              },
+              {
+                "id": "trip",
+                "label": "Viaje",
+                "emoji": "✈️",
+                "reply": "Sabía que elegirías eso."
+              },
+              {
+                "id": "dance",
+                "label": "Bailar",
+                "emoji": "💃",
+                "reply": "El ritmo nos llama."
+              },
+              {
+                "id": "escape",
+                "label": "Escapada",
+                "emoji": "🌅",
+                "reply": "Perfecto."
+              }
+            ]
+          }
+        }
+      ],
+      "completion": { "type": "manual" }
+    },
+    {
+      "id": "level-final",
+      "order": 8,
+      "title": "La pregunta",
+      "subtitle": "The Question",
+      "type": "final",
+      "active": true,
+      "content": [],
+      "completion": { "type": "manual" }
     }
   ],
   "finalQuestion": {
@@ -52,16 +330,23 @@
       "messages": [
         "¿Segura?",
         "¿Segurísima?",
-        "Creo que deberías pensarlo otra vez."
+        "Creo que deberías pensarlo otra vez.",
+        "Esta decisión tiene consecuencias.",
+        "Error 404: buena decisión no encontrada."
       ],
       "movementEnabled": true,
-      "movementIntensity": 0.6,
-      "maxDistance": 120
+      "movementIntensity": 0.7,
+      "maxDistance": 110
     }
   },
   "celebration": {
     "message": "Entonces es oficial.",
     "secondaryMessage": "Bienvenida a nuestra siguiente aventura.",
-    "effects": ["particles", "hearts", "confetti", "sound"]
+    "effects": ["particles", "hearts", "confetti", "vibration"]
+  },
+  "finalReward": {
+    "title": "Y ahora hay una última cosa",
+    "body": "Hay una cita esperándote — el detalle lo personalizas tú en el editor (Fase 4).",
+    "cta": "Descubrir recompensa"
   }
 }

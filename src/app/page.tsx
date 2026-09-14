@@ -1,35 +1,29 @@
-import Link from "next/link";
+import { Button } from "@/components/shared/Button";
+import { PageHeader } from "@/components/shared/PageHeader";
 
 export default function Home() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center gap-10 px-6 py-16">
-      <div className="max-w-lg text-center">
-        <p className="mb-3 text-sm tracking-[0.2em] uppercase text-[var(--color-muted)]">
-          Fase 0 — Scaffold
-        </p>
-        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-          Romantic Journey
-        </h1>
-        <p className="mt-4 text-base leading-relaxed text-[var(--color-muted)]">
-          Experiencia interactiva data-driven. El motor, los niveles y el editor
-          se construirán por fases sobre este scaffold.
-        </p>
-      </div>
+    <main className="relative flex flex-1 flex-col items-center justify-center px-6 py-20">
+      <div
+        className="flex w-full max-w-xl flex-col items-center gap-10"
+        style={{ animation: "fade-rise 0.7s var(--ease-out-expo) both" }}
+      >
+        <PageHeader
+          align="center"
+          eyebrow="Romantic Journey"
+          title="Una historia hecha para ti"
+          description="Experiencia interactiva data-driven: motor de niveles, estética romántica y un editor para personalizar cada escena."
+        />
 
-      <nav className="flex flex-col gap-3 sm:flex-row">
-        <Link
-          href="/play"
-          className="inline-flex h-12 items-center justify-center rounded-full bg-[var(--color-accent)] px-8 text-sm font-medium text-white transition-opacity hover:opacity-90"
-        >
-          Player Experience
-        </Link>
-        <Link
-          href="/admin"
-          className="inline-flex h-12 items-center justify-center rounded-full border border-white/20 px-8 text-sm font-medium transition-colors hover:bg-white/5"
-        >
-          Admin Editor
-        </Link>
-      </nav>
+        <nav className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+          <Button href="/play" size="lg">
+            Empezar el viaje
+          </Button>
+          <Button href="/admin" variant="secondary" size="lg">
+            Admin Editor
+          </Button>
+        </nav>
+      </div>
     </main>
   );
 }
