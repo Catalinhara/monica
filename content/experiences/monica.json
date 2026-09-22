@@ -1,0 +1,771 @@
+{
+  "id": "exp-monica-001",
+  "title": "Viaje romántico",
+  "recipientName": "Mónica",
+  "status": "draft",
+  "version": 47,
+  "theme": {
+    "id": "romantic-night",
+    "name": "Noche romántica",
+    "colors": {
+      "background": "#120810",
+      "foreground": "#f7eef4",
+      "accent": "#d46a86",
+      "muted": "#b39aab"
+    },
+    "typography": {
+      "display": "Cormorant Garamond",
+      "body": "Manrope"
+    }
+  },
+  "levels": [
+    {
+      "id": "level-0",
+      "order": 0,
+      "title": "Inicio",
+      "subtitle": "He preparado algo para ti...",
+      "type": "story",
+      "active": true,
+      "content": [
+        {
+          "id": "scene-0-1",
+          "type": "image",
+          "content": {
+            "text": "La primera vez que te vi, detrás de la pantalla del móvil…\n\n¿Recuerdas? Pensé: \"Es que vaya cuerpazo… se merece un cumplido por todo el esfuerzo y los resultados.\"\n\nY qué bonito fue descubrir después que, en realidad, era pura genética. 😂\n\nPero lo que todavía no sabía en aquel momento era que, detrás de esa pantalla, había alguien que me iba a regalar mil sonrisas, cientos de conversaciones, decenas de recuerdos (todavía) y lo mas importante, devolverme una ilusión que llevaba muchísimo tiempo sin sentir.",
+            "src": "/assets/uploads/exp-demo-001/1789646483824-whatsapp-image-2026-09-17-at-134520-1.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.45.20 (1).jpeg"
+          }
+        },
+        {
+          "id": "scene-0-2",
+          "type": "image",
+          "content": {
+            "text": "Nuestros primeros mensajes… de los miles que vendrían después.\n\nY, sin darme cuenta, poco a poco empecé a sonreír como un tonto mirando el teléfono y a darme cuenta de que me gustabas de verdad.",
+            "src": "/assets/uploads/exp-demo-001/1789646483983-whatsapp-image-2026-09-17-at-134520.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.45.20.jpeg"
+          }
+        },
+        {
+          "id": "scene-0-3",
+          "type": "image",
+          "content": {
+            "text": "Aquí, en esta mesa, junto a dos vasos de agua con gas, fue la primera vez que te vi en persona.\n\nY sí, me pareciste incluso más guapa e interesante en persona. Pero lo que más recuerdo son esas dos horas hablando que se nos pasaron volando, sin darnos cuenta. Desde el primer momento estuve muy a gusto contigo, como si llevaramos mucho más tiempo conociéndonos.",
+            "cta": "Comenzar aventura",
+            "src": "/assets/uploads/exp-demo-001/1789646861926-25694693-gastrobar.png",
+            "alt": "gastrobar.webp"
+          }
+        }
+      ],
+      "completion": {
+        "type": "all-scenes"
+      },
+      "reward": {
+        "type": "story",
+        "content": "Level 0 complete — Level 1 unlocked"
+      }
+    },
+    {
+      "id": "level-1",
+      "order": 1,
+      "title": "Un corto viaje en el tiempo...",
+      "subtitle": "Redescubriendo recuerdos",
+      "type": "memory",
+      "active": true,
+      "content": [
+        {
+          "id": "mem-1",
+          "type": "text",
+          "content": {
+            "title": "Shopping y cena...",
+            "description": "Nuestra primera tarde, entre ofertas de bañadores… confusión con la ropa de chicas, busqueda de neveritas o regalos personalizados para tu amiga, terminando con copas hasta muy tarde en un sofá…/n/n Todo nos llevó a nuestro primer beso, en un banco público, de madrugada, hablando de la vida y yo, completamente fascinado por tu mirada",
+            "src": "/assets/uploads/exp-demo-001/1789646494308-whatsapp-image-2026-09-17-at-134141-3.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.41.41 (3).jpeg"
+          }
+        },
+        {
+          "id": "mem-2",
+          "type": "text",
+          "content": {
+            "title": "Barcos, remos, patos y risas",
+            "description": "Desde los primeros días me regalaste nuevas experiencias y momentos divertidos.\n\nPero hay recuerdos que se quedan de una forma especial. Como la luna de aquella noche, las estrellas y...tú, tumbada en ese banquillo, mirándolas...",
+            "src": "/assets/uploads/exp-demo-001/1789646492465-whatsapp-image-2026-09-17-at-134140-6.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.41.40 (6).jpeg"
+          }
+        },
+        {
+          "id": "mem-3",
+          "type": "text",
+          "content": {
+            "title": "Primera escapada...",
+            "description": "Experiencias rurales, un hotel-museo, atardeceres con alma y… montar, pero no a caballo🤭.\n\nNuestra primera mañana juntos, pasando la prueba de fuego… verte sin maquillaje. Natural, recién despierta, y aun así preciosa como nunca.\n\nY por más grande que fuera aquella cama, parece que hasta dormido te estaba buscando, pegado a ti toda la noche ❤️",
+            "src": "/assets/uploads/exp-demo-001/1789646487621-whatsapp-image-2026-09-17-at-134139-5.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.41.39 (5).jpeg"
+          }
+        },
+        {
+          "id": "mem-4",
+          "type": "text",
+          "content": {
+            "title": "Nuestra sesión de fotos casera",
+            "description": "Una salida improvisada, una cámara y un desfile por el pasillo con nosotros dos demasiado arreglados para la ocasión… muy nosotros, muy rumanos 😂. Entre fotos, risas y alguna que otra pose improvisada, terminamos haciendo el que, para mí, sigue siendo el mejor fotón de la historia.",
+            "src": "/assets/uploads/exp-monica-001/1790097011601-ca134124-whatsapp-image-2026-09-17-at-132628-2.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.26.28 (2).jpeg"
+          }
+        },
+        {
+          "id": "mem-5",
+          "type": "text",
+          "content": {
+            "title": "Nuestro primer baile",
+            "description": "Y llegó nuestro primer baile… y también mi mayor miedo, porque, como bien sabes, se me da fatal 😂. Pero, aun así, quiero aprender y mejorar para descubrir contigo un mundo nuevo de sensaciones e intimidad que todavía es desconocido para mí, y que estoy deseando descubrir a tu lado.\n\nY aunque seguramente no haya sido el mejor baile, porque ni de lejos estoy a tu nivel, conseguimos destacar como si el lugar entero fuera nuestro, a pesar del cumpleaños de al lado 😂. Otro de esos momentos que, sin hacer demasiado ruido, terminan quedándose para siempre.",
+            "src": "/assets/uploads/exp-demo-001/1789646501292-whatsapp-image-2026-09-17-at-134143-1.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.41.43 (1).jpeg"
+          }
+        },
+        {
+          "id": "mem-6",
+          "type": "text",
+          "content": {
+            "title": "Descubriendo nuestro sitios especiales",
+            "description": "Poco a poco fuimos encontrando esos lugares que, sin saber muy bien por qué, empezaron a sentirse un poquito nuestros. Porque al final no es tanto el sitio… sino con quién lo compartes.",
+            "src": "/assets/uploads/exp-demo-001/1789646497019-whatsapp-image-2026-09-17-at-134142-9.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.41.42 (9).jpeg"
+          }
+        }
+      ],
+      "completion": {
+        "type": "manual"
+      },
+      "reward": {
+        "type": "memory",
+        "content": "+1 recuerdo"
+      }
+    },
+    {
+      "id": "level-2",
+      "order": 2,
+      "title": "¿Nos conocemos?",
+      "subtitle": "Otro tipo de trivia...",
+      "type": "quiz",
+      "active": true,
+      "content": [
+        {
+          "id": "q-1",
+          "type": "question",
+          "content": {
+            "question": "Cuando digo \"no tengo sueño\", normalmente significa…",
+            "options": [
+              {
+                "id": "a",
+                "label": "Que en 10 minutos estoy dormido"
+              },
+              {
+                "id": "b",
+                "label": "Que quiero seguir hablando contigo hasta las tantas"
+              },
+              {
+                "id": "c",
+                "label": "Que de repente necesito comer algo"
+              }
+            ],
+            "correctOptionId": "b",
+            "feedbackCorrect": "Exacto. Ya sabes demasiado de mí. ❤️",
+            "feedbackWrong": "No está mal… pero todavía te quedan algunos secretos por descubrir. 😏"
+          }
+        },
+        {
+          "id": "q-2",
+          "type": "question",
+          "content": {
+            "question": "¿Qué recuerdo nuestro creo que podría revivir una y otra vez?",
+            "options": [
+              {
+                "id": "a",
+                "label": "Nuestro primer beso"
+              },
+              {
+                "id": "b",
+                "label": "Una noche cualquiera hablando durante horas"
+              },
+              {
+                "id": "c",
+                "label": "Aquel momento mirando las estrellas"
+              }
+            ],
+            "correctOptionId": "c",
+            "feedbackCorrect": "Sí… ese momento tiene algo que todavía no sé explicar. 🌙✨",
+            "feedbackWrong": "Podría ser cualquiera de ellos, pero hay uno que guardo de una forma especial. ❤️"
+          }
+        },
+        {
+          "id": "q-3",
+          "type": "question",
+          "content": {
+            "question": "Cuando tenemos un día entero para nosotros, ¿qué crees que es lo que mejor nos representa?",
+            "options": [
+              {
+                "id": "a",
+                "label": "Organizar un buen plan y seguirlo al pie de la letra"
+              },
+              {
+                "id": "b",
+                "label": "Preparar un plan y acabar improvisando sobre la marcha"
+              },
+              {
+                "id": "c",
+                "label": "No organizar nada y ver qué pasa"
+              }
+            ],
+            "correctOptionId": "b",
+            "feedbackCorrect": "Exactamente. 😂❤️ Nos encanta preparar nuestros planes y escapadas, pero siempre acabamos añadiendo alguna locura o cambiando algo por el camino.",
+            "feedbackWrong": "Casi… 😂 Nos encanta organizar nuestros planes y escapadas, pero ya sabes que siempre terminamos improvisando alguna cosa por el camino. ❤️"
+          }
+        },
+        {
+          "id": "q-4",
+          "type": "question",
+          "content": {
+            "question": "¿Qué pequeña cosa haces que probablemente no sepas que me encanta?",
+            "options": [
+              {
+                "id": "a",
+                "label": "La forma en que me miras"
+              },
+              {
+                "id": "b",
+                "label": "Cuando te ríes de alguna tontería"
+              },
+              {
+                "id": "c",
+                "label": "Cuando te quedas dormida a mi lado"
+              }
+            ],
+            "correctOptionId": "a",
+            "feedbackCorrect": "Sí. Esa mirada tuya debería venir con algún tipo de advertencia. 🥹❤️",
+            "feedbackWrong": "Todas son peligrosamente correctas… pero hay una que me puede completamente. 👀"
+          }
+        },
+        {
+          "id": "q-5",
+          "type": "question",
+          "content": {
+            "question": "Si alguien tuviera que hacer una película sobre nosotros, ¿qué sería lo más difícil de explicar? 😂",
+            "options": [
+              {
+                "id": "a",
+                "label": "Cómo acabamos metidos en tantos planes"
+              },
+              {
+                "id": "b",
+                "label": "Como llegamos al final de mes"
+              },
+              {
+                "id": "c",
+                "label": "Que, de alguna manera, todo acaba teniendo sentido"
+              }
+            ],
+            "correctOptionId": "c",
+            "feedbackCorrect": "Exactamente 😂. Visto desde fuera, algunas cosas no tendrían ningún sentido… pero nosotros sabemos perfectamente por qué acabamos ahí. ❤️",
+            "feedbackWrong": "También 😂, pero lo más difícil de explicar sería cómo, después de todas nuestras decisiones y aventuras, todo acaba teniendo sentido de alguna manera."
+          }
+        },
+        {
+          "id": "q-6",
+          "type": "question",
+          "content": {
+            "question": "¿Qué es más probable que ocurra cuando decimos \"solo una copa\"?",
+            "options": [
+              {
+                "id": "a",
+                "label": "Nos vamos pronto a casa"
+              },
+              {
+                "id": "b",
+                "label": "Terminamos hablando de la vida hasta las tantas"
+              },
+              {
+                "id": "c",
+                "label": "Nos acordamos de que mañana madrugamos"
+              }
+            ],
+            "correctOptionId": "b",
+            "feedbackCorrect": "Sabía que esta no se te escapaba. 🍷😂",
+            "feedbackWrong": "JA. Tenemos una definición bastante creativa de \"una copa\". 🍷"
+          }
+        },
+        {
+          "id": "q-7",
+          "type": "question",
+          "content": {
+            "question": "¿Qué creo que es lo que más ha cambiado desde que nos conocimos?",
+            "options": [
+              {
+                "id": "a",
+                "label": "La cantidad de fotos que tenemos"
+              },
+              {
+                "id": "b",
+                "label": "Lo mucho que hemos aprendido el uno del otro"
+              },
+              {
+                "id": "c",
+                "label": "Que ya sabemos demasiado el uno del otro"
+              }
+            ],
+            "correctOptionId": "b",
+            "feedbackCorrect": "Exacto. Y lo bonito es que todavía nos queda muchísimo por descubrir. ❤️",
+            "feedbackWrong": "También podría ser… pero para mí hay algo mucho más importante. 🥰"
+          }
+        },
+        {
+          "id": "q-8",
+          "type": "question",
+          "content": {
+            "question": "Si pudieras elegir un botón para nuestra relación, ¿cuál pulsarías?",
+            "options": [
+              {
+                "id": "a",
+                "label": "Repetir nuestro mejor día"
+              },
+              {
+                "id": "b",
+                "label": "Pausar el tiempo en nuestros momentos favoritos"
+              },
+              {
+                "id": "c",
+                "label": "Saltar directamente a nuestro próximo recuerdo"
+              }
+            ],
+            "correctOptionId": "b",
+            "feedbackCorrect": "Eso quería escuchar. Porque todavía nos quedan demasiadas cosas por vivir. ❤️",
+            "feedbackWrong": "Tentador… aunque yo prefiero pensar en todo lo que todavía nos queda por vivir. ✨"
+          }
+        },
+        {
+          "id": "q-9",
+          "type": "question",
+          "content": {
+            "question": "¿Cuál es la prueba definitiva de que ya me tienes demasiado calado? 😂",
+            "options": [
+              {
+                "id": "a",
+                "label": "Sabes cuándo necesito mi momento de tranquilidad"
+              },
+              {
+                "id": "b",
+                "label": "Sabes que me pasa algo aunque diga que no me pasa nada"
+              },
+              {
+                "id": "c",
+                "label": "Ya sabes lo que voy a decir antes de que lo diga"
+              }
+            ],
+            "correctOptionId": "b",
+            "feedbackCorrect": "Exactamente 😂. Puedes conocerme demasiado bien, pero lo peor es que ni siquiera me hace falta decir nada para que sepas que me pasa algo. ❤️",
+            "feedbackWrong": "No vas mal 😂, pero todavía te queda un poquito para tenerme completamente calado."
+          }
+        },
+        {
+          "id": "q-10",
+          "type": "question",
+          "content": {
+            "question": "Y la pregunta más importante… ¿qué creo que nos queda por vivir?",
+            "options": [
+              {
+                "id": "a",
+                "label": "Un montón de experiencias"
+              },
+              {
+                "id": "b",
+                "label": "Miles de historias que todavía no conocemos"
+              },
+              {
+                "id": "c",
+                "label": "Todo lo anterior… y mucho más"
+              }
+            ],
+            "correctOptionId": "c",
+            "feedbackCorrect": "Exacto. Esta historia acaba de empezar. ❤️",
+            "feedbackWrong": "Te ha faltado una cosa… todo lo que todavía nos queda por vivir. 🥰"
+          }
+        }
+      ],
+      "completion": {
+        "type": "manual"
+      }
+    },
+    {
+      "id": "level-3",
+      "order": 3,
+      "title": "Prueba de manualidades",
+      "subtitle": "Juguemos un poquito...",
+      "type": "sorting",
+      "active": true,
+      "content": [
+        {
+          "id": "puzzle-1",
+          "type": "image",
+          "content": {
+            "prompt": "Lo que mas me gusta abrazar...",
+            "successMessage": "La verdad que hacemos una pareja muy bonita...",
+            "src": "/assets/uploads/exp-monica-001/1790097032314-37f31c20-whatsapp-image-2026-09-17-at-134143-5.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.41.43 (5).jpeg"
+          }
+        },
+        {
+          "id": "puzzle-2",
+          "type": "image",
+          "content": {
+            "prompt": "Tu primer ramo de flores de mi...",
+            "successMessage": "...y mi segunda foto favorita de ti, estabas radiante...",
+            "src": "/assets/uploads/exp-monica-001/1790097033387-f0b56cce-whatsapp-image-2026-09-17-at-134143-11.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.41.43 (11).jpeg"
+          }
+        },
+        {
+          "id": "puzzle-3",
+          "type": "image",
+          "content": {
+            "prompt": "Pista: podria ser material de manualidades para mi...🫠",
+            "successMessage": "Tan sexy, tan tu...🔥🔥🔥",
+            "src": "/assets/uploads/exp-monica-001/1790097036343-5861b001-whatsapp-image-2026-09-17-at-132627.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.26.27.jpeg"
+          }
+        },
+        {
+          "id": "puzzle-4",
+          "type": "image",
+          "content": {
+            "prompt": "Lo que más me enamoró de ti y lo que más echo de menos cuando no estás…",
+            "successMessage": "Esa mirada tuya… Dios.",
+            "src": "/assets/uploads/exp-monica-001/1790097020486-01b60d19-whatsapp-image-2026-09-17-at-134138-9.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.41.38 (9).jpeg"
+          }
+        }
+      ],
+      "completion": {
+        "type": "manual"
+      }
+    },
+    {
+      "id": "level-4",
+      "order": 4,
+      "title": "Laboratorio scientifico",
+      "subtitle": "Análisis relacional IA",
+      "type": "compatibility",
+      "active": true,
+      "content": [
+        {
+          "id": "compat",
+          "type": "statistic",
+          "content": {
+            "title": "ANÁLISIS DE COMPATIBILIDAD 🧪",
+            "introTitle": "Ahora tenemos bastantes datos para hacer un análisis.",
+            "introBody": "Recuerdos, respuestas, puzzles y un montón de momentos compartidos…\n\nEs el momento de que el experto virtual en relaciones interpersonales prepare su informe más importante.",
+            "introCta": "Empezar el análisis",
+            "analyzingTitle": "Informe en curso",
+            "analyzingLabel": "Analizando vuestra relación…",
+            "analyzingSteps": [
+              "Recopilando sonrisas, miradas y mensajes…",
+              "El experto virtual en relaciones interpersonales toma nota de todo…",
+              "Cruzando química, confianza, risas y planes…",
+              "Preparando el informe confidencial…"
+            ],
+            "resultsTitle": "Resultados del análisis",
+            "resultsSubtitle": "Informe confidencial · solo para vosotros dos",
+            "overallLabel": "Compatibilidad general",
+            "attentionThreshold": 90,
+            "attentionLabel": "Se necesita más atención",
+            "closingMessage": "Veredicto: sois un caso perdido… de lo bonito.\nRecomendación oficial: seguir juntos.",
+            "verdictLabel": "Super compatibles",
+            "stats": [
+              {
+                "name": "Química",
+                "percent": 99
+              },
+              {
+                "name": "Confianza",
+                "percent": 98
+              },
+              {
+                "name": "Comunicación",
+                "percent": 95
+              },
+              {
+                "name": "Sentido del humor",
+                "percent": 98
+              },
+              {
+                "name": "Compañerismo",
+                "percent": 99
+              },
+              {
+                "name": "Predisposición al alcoholismo",
+                "percent": 74,
+                "attentionNote": "Nivel alto. ‘Solo una copa’ no entra dentro de vuestro vocabulario. Se recomienda un cambio de hábitos."
+              },
+              {
+                "name": "Intimidad y sexo",
+                "percent": 100
+              },
+              {
+                "name": "Rumanidad",
+                "percent": 58,
+                "attentionNote": "El experto ha buscado por todas partes…pero rumanidad, la justa."
+              },
+              {
+                "name": "Ganas de hacer planes",
+                "percent": 97
+              },
+              {
+                "name": "Capacidad para improvisar",
+                "percent": 96
+              },
+              {
+                "name": "Conexión espiritual",
+                "percent": 86,
+                "attentionNote": "Se necesita más soltura…de parte de Cata"
+              },
+              {
+                "name": "Naturalidad juntos",
+                "percent": 100
+              },
+              {
+                "name": "Baile",
+                "percent": 67,
+                "attentionNote": "Se necesita más atención… y más práctica en la pista."
+              },
+              {
+                "name": "Resistencia al agua fría",
+                "percent": 100
+              }
+            ]
+          }
+        }
+      ],
+      "completion": {
+        "type": "manual"
+      }
+    },
+    {
+      "id": "level-5",
+      "order": 5,
+      "title": "La conexión",
+      "subtitle": "Algo que no se puede medir o explicar",
+      "type": "story",
+      "active": true,
+      "content": [
+        {
+          "id": "c-1",
+          "type": "text",
+          "content": {
+            "presentation": "connection",
+            "eyebrow": "Después del análisis",
+            "text": "El laboratorio ya ha hablado: números, barras y veredictos…\n\nBonitos resultados.\nPero hay algo que ninguna barra puede medir."
+          }
+        },
+        {
+          "id": "c-2",
+          "type": "text",
+          "content": {
+            "eyebrow": "Cómo nos entendemos",
+            "text": "Creo que una de las cosas que más me gusta de nosotros es lo fácil que resulta estar juntos.\n\nHablamos muchísimo, de todo y de nada. Pero tampoco necesitamos estar hablando constantemente para entendernos. A veces basta una mirada, un gesto o una pequeña tontería.\n\nY sí, quizá no siempre vamos a estar de acuerdo. Es inevitable. Pero no me da miedo que pase contigo, porque sé que sabemos comprendernos, respetarnos, empatizar y buscar soluciones. Al final, incluso los desacuerdos nos ayudan a conocernos mejor y a adaptarnos el uno al otro."
+          }
+        },
+        {
+          "id": "c-3",
+          "type": "text",
+          "content": {
+            "eyebrow": "Ser nosotros",
+            "text": "Contigo no siento que tenga que medir cada palabra ni pensar demasiado cómo tengo que ser.\n\nPuedo estar tranquilo, hacer el idiota, hablar durante horas, quedarme en silencio o aparecer con alguna de mis ideas cuestionables, o esas burradas que casi siempre consiguen sacarte una sonrisa… y seguir sintiéndome completamente cómodo contigo.\n\nY me encanta ver que tú también eres así conmigo. Que te ríes, haces el tonto, dices lo primero que se te pasa por la cabeza y dejas salir esa parte tan natural y divertida de ti. Saber que puedes ser tú misma conmigo es una de las cosas que más valoro de nosotros."
+          }
+        },
+        {
+          "id": "c-4",
+          "type": "text",
+          "content": {
+            "eyebrow": "Lo que quiero cuidar",
+            "text": "Hay una parte de ti que me encanta especialmente: esa niña que aparece cuando te ríes sin pensar, haces alguna tontería o simplemente te dejas llevar.\n\nQuiero cuidar esa parte de ti. Quiero que conmigo puedas sacarla siempre que quieras, sin miedo a que nadie la juzgue, y hacer todo lo posible para que siempre tenga un lugar donde sentirse segura.\n\nY también quiero construir contigo algo que se parezca a un hogar. No hablo solo de un sitio físico, sino de ese lugar al que podamos volver cuando estemos juntos y sentir que estamos bien, que podemos bajar la guardia y simplemente ser nosotros."
+          }
+        },
+        {
+          "id": "c-5",
+          "type": "text",
+          "content": {
+            "eyebrow": "Mi compromiso",
+            "text": "No puedo prometerte que nunca nos equivocaremos, que nunca discutiremos o que todo será siempre fácil.\n\nPero sí puedo comprometerme a algo: a cuidar lo nuestro, a cuidarte a ti sin olvidarme de mí, a respetarte y a intentar siempre hacer las cosas de la mejor manera posible. Intentaré siempre no hacerte daño de forma consciente y, sobre todo, no convertirme nunca en alguien de quien tengas que protegerte o esconderte.\n\nQuiero ayudarte a sacar a la luz todo lo que podrias llegar a ser, y estar a tu lado mientras persigues tus sueños y propósitos, aunque eso también signifique complicarme un poquito la vida. 😂 Quiero que podamos crecer juntos, seguir siendo nosotros y aprender a complementarnos cada vez mejor."
+          }
+        },
+        {
+          "id": "c-6",
+          "type": "text",
+          "content": {
+            "eyebrow": "Para ti",
+            "text": "Mónica,\n\nme devolviste una ilusión que llevaba mucho tiempo sin sentir.\nY quiero seguir descubriéndola… contigo.\n\nQuiero comprometerme a poner de mi parte para construir algo bonito y, sobre todo, algo que tenga valor para los dos. Algo que no se base en que todo sea perfecto, sino en cuidarnos, apoyarnos, disfrutar de lo que tenemos y seguir creciendo juntos.\n\nNo sé exactamente qué forma tendrá todo lo que nos queda por construir, pero sí sé que quiero hacerlo contigo y que, cuando miremos atrás dentro de muchos años, podamos pensar que todo lo que vivimos antes de encontrarnos, todas las vueltas que dio la vida y todo lo que tuvimos que pasar mereció la pena si al final nos llevó hasta aquí, juntos.\n\nTe iubesc. ❤️",
+            "cta": "Seguir el viaje"
+          }
+        }
+      ],
+      "completion": {
+        "type": "all-scenes"
+      }
+    },
+    {
+      "id": "level-6",
+      "order": 6,
+      "title": "¿Bailamos?",
+      "subtitle": "Dos canciones. Te las dedico.  ❤️",
+      "type": "interactive",
+      "active": true,
+      "content": [
+        {
+          "id": "dance",
+          "type": "animation",
+          "content": {
+            "introTitle": "¿Bailamos?",
+            "introBody": "Dicen que la vida es un baile, y creo que las relaciones todavía más. A veces uno mismo lleva el ritmo, otras veces lo lleva el otro, a veces nos pisamos… y otras simplemente nos dejamos llevar.\n\nAsí que, después del momento anterior tan sumamente cursi, creo que nos hemos ganado un poquito de diversión. 😂",
+            "afterPrompt": "Creo que nosotros encontramos el mismo ritmo.",
+            "doneBody": "Seguiremos practicando en la vida real amor",
+            "dances": [
+              {
+                "style": "bachata",
+                "title": "Bachata",
+                "prompt": "Sigue los pasos: 1 · 2 · 3 · tap",
+                "afterPrompt": "Y pronto vamos a poder sentir este ritmo de verdad, juntos. Dame dos meses… 😏",
+                "targetSteps": 30,
+                "bpm": 108,
+                "musicSrc": "/audio/bachata.mp3"
+              },
+              {
+                "style": "salsa",
+                "title": "Salsa",
+                "prompt": "Ahora salsa: 1 · 2 · 3 · … · 5 · 6 · 7",
+                "afterPrompt": "Como se nota que eres salsera… ¡suave, mi niña! 💃",
+                "targetSteps": 30,
+                "bpm": 142,
+                "musicSrc": "/audio/salsa.mp3"
+              }
+            ]
+          }
+        }
+      ],
+      "completion": {
+        "type": "interaction-count",
+        "threshold": 8
+      }
+    },
+    {
+      "id": "level-7",
+      "order": 7,
+      "title": "Lo que queda por venir",
+      "subtitle": "Una pequeña mirada adelante",
+      "type": "choice",
+      "active": true,
+      "content": [
+        {
+          "id": "future",
+          "type": "choice",
+          "content": {
+            "prompt": "¿Qué hacemos primero?",
+            "subtitle": "Estamos casi al final, elige un premio",
+            "body": "Dicen que el futuro no se encuentra, se construye.\n\nY me gusta pensar que el nuestro ya ha empezado a construirse, sin darnos cuenta, con cada decisión, cada conversación y cada pequeño paso que nos ha traído hasta aquí.\n\nNo sé qué nos espera. Quizá hagamos muchos de los planes que ya imaginamos, quizá cambiemos de rumbo mil veces o aparezcan cosas que ahora ni siquiera somos capaces de imaginar.\n\nPorque después de todo lo que tuvo que pasar para que nuestras vidas se cruzaran, me apetece muchísimo ver hasta dónde somos capaces de llegar juntos.\n \nElige el premio con el que quieres abrir lo que viene.",
+            "options": [
+              {
+                "id": "dinner",
+                "label": "Experiencia",
+                "motif": "dinner",
+                "imageSrc": "/prizes/cena.jpg",
+                "reply": "Buena elección."
+              },
+              {
+                "id": "trip",
+                "label": "Viaje",
+                "motif": "trip",
+                "imageSrc": "/prizes/viaje.jpg",
+                "reply": "Sabía que elegirías eso."
+              },
+              {
+                "id": "dance",
+                "label": "Concierto",
+                "motif": "dance",
+                "imageSrc": "/prizes/baile.jpg",
+                "reply": "El ritmo nos llama."
+              },
+              {
+                "id": "escape",
+                "label": "Escapada",
+                "motif": "escape",
+                "imageSrc": "/prizes/escapada.jpg",
+                "reply": "Perfecto."
+              }
+            ]
+          }
+        }
+      ],
+      "completion": {
+        "type": "manual"
+      }
+    },
+    {
+      "id": "level-final",
+      "order": 8,
+      "title": "Mi propuesta",
+      "subtitle": "Ha llegado el momento...",
+      "type": "final",
+      "active": true,
+      "content": [],
+      "completion": {
+        "type": "manual"
+      }
+    }
+  ],
+  "finalQuestion": {
+    "prompt": "¿Quieres ser mi novia?",
+    "yesLabel": "Sí",
+    "noLabel": "No",
+    "noBehavior": {
+      "enabled": true,
+      "startAfterAttempts": 0,
+      "messages": [
+        "¿Segura?",
+        "¿Segurísima?",
+        "Creo que deberías pensarlo otra vez.",
+        "Esta decisión tiene consecuencias.",
+        "Error 404: buena decisión no encontrada.",
+        "El botón No está en mantenimiento.",
+        "Inténtalo de nuevo… con el otro botón.",
+        "Mmm… eso no estaba en el guion.",
+        "Tu yo del futuro te mira raro.",
+        "Detectamos resistencia. Aplicando encanto…",
+        "Negativa denegada por exceso de química.",
+        "¿Y si lo leemos otra vez, despacio?",
+        "Esa opción no está disponible en esta relación.",
+        "Venga… el Sí es más bonito.",
+        "Sistema: redirigiendo a la respuesta correcta."
+      ],
+      "movementEnabled": true,
+      "movementIntensity": 0.7,
+      "maxDistance": 110
+    }
+  },
+  "celebration": {
+    "eyebrow": "Celebración",
+    "message": "**Entonses** es oficial.",
+    "secondaryMessage": "Bienvenida a nuestra siguiente aventura. Nuestra historia acaba de empezar...oficialmente",
+    "achievementLabel": "NUEVO LOGRO",
+    "achievementTitle": "NOVIO DESBLOQUEADO",
+    "musicSrc": "/audio/celebration.mp3",
+    "effects": [
+      "particles",
+      "hearts",
+      "confetti",
+      "vibration",
+      "sound"
+    ]
+  },
+  "finalReward": {
+    "title": "Y ahora hay una última cosa",
+    "body": "Hay una premio esperandote...",
+    "cta": "Descubrir recompensa"
+  }
+}

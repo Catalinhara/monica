@@ -21,6 +21,7 @@ export {
   getCurrentPlayableLevel,
   getJourneyProgressPercent,
   getStatusLabel,
+  getLevelTypeLabel,
 } from "./progression-engine";
 export {
   getSceneCursor,

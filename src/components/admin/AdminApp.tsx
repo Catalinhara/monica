@@ -17,13 +17,30 @@ export function AdminApp() {
   const panel = useAdminStore((s) => s.panel);
   const selectedLevelId = useAdminStore((s) => s.selectedLevelId);
   const dirty = useAdminStore((s) => s.dirty);
+  const diskStatus = useAdminStore((s) => s.diskStatus);
   const message = useAdminStore((s) => s.message);
+  const lastSavedAt = useAdminStore((s) => s.lastSavedAt);
   const saveDraft = useAdminStore((s) => s.saveDraft);
   const publish = useAdminStore((s) => s.publish);
 
   useEffect(() => {
     hydrate();
   }, [hydrate]);
+
+  useEffect(() => {
+    function onBeforeUnload(event: BeforeUnloadEvent) {
+      const state = useAdminStore.getState();
+      if (state.dirty || state.diskStatus === "saving") {
+        event.preventDefault();
+        event.returnValue = "";
+      }
+    }
+
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => {
+      window.removeEventListener("beforeunload", onBeforeUnload);
+    };
+  }, []);
 
   if (!draft) {
     return (
@@ -33,6 +50,17 @@ export function AdminApp() {
     );
   }
 
+  const statusLabel =
+    diskStatus === "saving"
+      ? "Guardando en monica.json…"
+      : diskStatus === "error"
+        ? "Error al guardar en disco"
+        : dirty
+          ? "Cambios sin guardar en disco"
+          : lastSavedAt
+            ? `Guardado en disco · ${new Date(lastSavedAt).toLocaleTimeString()}`
+            : "Sin autoguardado · usa Guardar ahora";
+
   return (
     <div className="flex min-h-screen flex-1 flex-col lg:flex-row">
       <div className="hidden lg:block">
@@ -41,32 +69,52 @@ export function AdminApp() {
 
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="sticky top-0 z-20 flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border)] bg-[var(--background)]/80 px-4 py-3 backdrop-blur-md">
-          <div className="flex items-center gap-3">
+          <div className="flex min-w-0 flex-col gap-0.5 sm:flex-row sm:items-center sm:gap-3">
             <Link
               href="/"
               className="text-sm text-[var(--muted)] hover:text-[var(--foreground)]"
             >
               ← Home
             </Link>
-            <span className="text-sm text-[var(--muted)]">
-              {dirty ? "Cambios sin guardar" : "Sincronizado"}
+            <span
+              className={`text-sm ${
+                diskStatus === "error"
+                  ? "text-amber-400"
+                  : diskStatus === "saving"
+                    ? "text-[var(--accent)]"
+                    : dirty
+                      ? "text-amber-300"
+                      : "text-[var(--muted)]"
+              }`}
+            >
+              {statusLabel}
             </span>
             {message && (
-              <span className="text-sm text-[var(--accent)]">{message}</span>
+              <span className="truncate text-sm text-[var(--accent)]">
+                {message}
+              </span>
             )}
           </div>
           <div className="flex flex-wrap gap-2">
-            <Button href="/play?preview=1" variant="ghost" size="sm">
+            <Button href="/monica?preview=1" variant="ghost" size="sm">
               Preview
             </Button>
             <Button variant="secondary" size="sm" onClick={saveDraft}>
-              Save draft
+              Guardar ahora
             </Button>
             <Button size="sm" onClick={publish}>
-              Publish
+              Publicar
             </Button>
           </div>
         </header>
+
+        <div className="border-b border-[var(--border)] bg-black/20 px-4 py-2 text-xs text-[var(--muted)]">
+          Los cambios se quedan en el navegador mientras editas. Pulsa{" "}
+          <strong className="text-[var(--foreground)]">Guardar ahora</strong> o{" "}
+          <strong className="text-[var(--foreground)]">Publicar</strong> para
+          escribir{" "}
+          <code className="text-[var(--accent)]">monica.json</code> en disco.
+        </div>
 
         <div className="border-b border-[var(--border)] px-4 py-2 lg:hidden">
           <p className="mb-2 text-xs text-[var(--muted)]">

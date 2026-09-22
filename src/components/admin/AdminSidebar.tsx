@@ -30,7 +30,7 @@ export function AdminSidebar() {
         {(
           [
             ["experience", "Experiencia"],
-            ["final", "Pregunta final"],
+            ["final", "Pregunta + celebración"],
             ["assets", "Assets"],
             ["versions", "Versiones"],
           ] as const

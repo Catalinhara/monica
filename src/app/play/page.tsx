@@ -1,16 +1,11 @@
-import { Suspense } from "react";
-import { ExperiencePlayer } from "@/components/player/ExperiencePlayer";
+import { redirect } from "next/navigation";
 
-export default function PlayPage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="flex flex-1 items-center justify-center text-[var(--muted)]">
-          Cargando…
-        </div>
-      }
-    >
-      <ExperiencePlayer />
-    </Suspense>
-  );
+type PlayPageProps = {
+  searchParams: Promise<{ preview?: string }>;
+};
+
+export default async function PlayPage({ searchParams }: PlayPageProps) {
+  const params = await searchParams;
+  const query = params.preview === "1" ? "?preview=1" : "";
+  redirect(`/monica${query}`);
 }

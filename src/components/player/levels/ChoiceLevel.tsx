@@ -1,16 +1,20 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getLevelScenes } from "@/engine";
 import type { ChoiceLevelContent, Experience, Level } from "@/types";
 import { Button } from "@/components/shared/Button";
-import { Surface } from "@/components/shared/Surface";
 import { LevelShell } from "../LevelShell";
+import { PrizeCard, resolvePrizeMotif } from "../PrizeCard";
+import { normalizeDisplayText } from "@/lib/display-text";
 
 type Props = {
   experience: Experience;
   level: Level;
-  onComplete: () => void;
+  onComplete: (meta?: {
+    selectedOptionId?: string;
+    selectedOptionLabel?: string;
+  }) => void;
   onExit: () => void;
 };
 
@@ -24,12 +28,23 @@ function loadChoice(level: Level): ChoiceLevelContent {
 
   return {
     prompt: "¿Qué hacemos primero?",
+    subtitle: "Estamos casi al final, elige un premio",
     options: scenes.map((scene, i) => {
-      const c = scene.content as { label?: string; text?: string; emoji?: string; reply?: string; id?: string };
+      const c = scene.content as {
+        label?: string;
+        text?: string;
+        emoji?: string;
+        motif?: string;
+        reply?: string;
+        id?: string;
+        imageSrc?: string;
+      };
       return {
         id: c.id ?? scene.id,
         label: c.label ?? c.text ?? `Opción ${i + 1}`,
         emoji: c.emoji,
+        motif: c.motif as ChoiceLevelContent["options"][number]["motif"],
+        imageSrc: c.imageSrc,
         reply: c.reply,
       };
     }),
@@ -41,6 +56,10 @@ export function ChoiceLevel({ experience, level, onComplete, onExit }: Props) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selected = data.options.find((o) => o.id === selectedId);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [level.id]);
+
   return (
     <LevelShell
       experience={experience}
@@ -48,41 +67,61 @@ export function ChoiceLevel({ experience, level, onComplete, onExit }: Props) {
       progressPercent={selected ? 100 : 20}
       onExit={onExit}
     >
-      <h2 className="font-display mb-8 text-center text-3xl">{data.prompt}</h2>
+      <div className="flex flex-col pb-2">
+        {data.body && (
+          <p className="mb-6 whitespace-pre-wrap text-center text-sm leading-relaxed text-[var(--muted)]">
+            {normalizeDisplayText(data.body)}
+          </p>
+        )}
 
-      <div className="grid grid-cols-2 gap-3">
-        {data.options.map((option) => (
-          <button
-            key={option.id}
-            type="button"
-            onClick={() => setSelectedId(option.id)}
-            className="text-left"
-          >
-            <Surface
-              interactive
-              className={`flex min-h-24 flex-col items-center justify-center gap-2 p-4 text-center ${
-                selectedId === option.id
-                  ? "border-[var(--accent)]/60 bg-[var(--accent-soft)]"
-                  : ""
-              }`}
+        <h2 className="font-display text-center text-3xl leading-snug">
+          {data.prompt}
+        </h2>
+        {data.subtitle && (
+          <p className="mt-2 text-center text-sm text-[var(--muted)]">
+            {normalizeDisplayText(data.subtitle)}
+          </p>
+        )}
+
+        <div className="mt-8 grid grid-cols-2 gap-3 [overflow-anchor:none]">
+          {data.options.map((option) => (
+            <button
+              key={option.id}
+              type="button"
+              onClick={() => setSelectedId(option.id)}
+              className="text-left [overflow-anchor:none]"
+              aria-pressed={selectedId === option.id}
             >
-              {option.emoji && <span className="text-2xl">{option.emoji}</span>}
-              <span className="text-sm font-medium">{option.label}</span>
-            </Surface>
-          </button>
-        ))}
-      </div>
+              <PrizeCard
+                label={option.label}
+                motif={resolvePrizeMotif(option)}
+                imageSrc={option.imageSrc}
+                selected={selectedId === option.id}
+              />
+            </button>
+          ))}
+        </div>
 
-      {selected && (
-        <p className="mt-6 text-center text-[var(--accent)]">
-          {selected.reply ?? "Buena elección."}
-        </p>
-      )}
+        {selected && (
+          <p className="mt-6 text-center text-sm text-[var(--accent)]">
+            {selected.reply ?? "Buena elección."}
+          </p>
+        )}
 
-      <div className="mt-auto pt-8">
-        <Button className="w-full" disabled={!selectedId} onClick={onComplete}>
-          Continuar
-        </Button>
+        <div className="pt-8">
+          <Button
+            className="w-full"
+            disabled={!selectedId || !selected}
+            onClick={() =>
+              onComplete({
+                selectedOptionId: selected!.id,
+                selectedOptionLabel: selected!.label,
+              })
+            }
+          >
+            Continuar
+          </Button>
+        </div>
       </div>
     </LevelShell>
   );

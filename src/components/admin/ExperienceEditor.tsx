@@ -15,7 +15,8 @@ export function ExperienceEditor() {
       <header>
         <h2 className="font-display text-3xl">Experiencia</h2>
         <p className="mt-1 text-sm text-[var(--muted)]">
-          Metadatos globales. El player usa la versión publicada.
+          Metadatos globales. Usa Guardar ahora / Publicar para escribir
+          monica.json en disco.
         </p>
       </header>
 
@@ -47,14 +48,23 @@ export function ExperienceEditor() {
       </Field>
 
       <div className="rounded-xl border border-[var(--border)] bg-black/20 px-4 py-3 text-sm text-[var(--muted)]">
-        Estado: <span className="text-[var(--foreground)]">{draft.status ?? "draft"}</span>
+        Estado:{" "}
+        <span className="text-[var(--foreground)]">
+          {draft.status ?? "draft"}
+        </span>
         {" · "}
-        Versión base: <span className="text-[var(--foreground)]">{draft.version ?? 1}</span>
+        Versión base:{" "}
+        <span className="text-[var(--foreground)]">
+          {draft.version ?? 1}
+        </span>
         {" · "}
-        Niveles: <span className="text-[var(--foreground)]">{draft.levels.length}</span>
+        Niveles:{" "}
+        <span className="text-[var(--foreground)]">
+          {draft.levels.length}
+        </span>
       </div>
 
-      <Button href="/play?preview=1" variant="secondary">
+      <Button href="/monica?preview=1" variant="secondary">
         Abrir preview del borrador
       </Button>
     </div>

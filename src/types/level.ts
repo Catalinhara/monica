@@ -110,4 +110,7 @@ export type LevelProgress = {
   score?: number;
   attempts?: number;
   completedAt?: string;
+  /** Prize / choice selected in a choice level (e.g. El futuro). */
+  selectedOptionId?: string;
+  selectedOptionLabel?: string;
 };

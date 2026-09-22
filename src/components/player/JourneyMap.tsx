@@ -2,6 +2,7 @@
 
 import {
   getJourneyProgressPercent,
+  getLevelTypeLabel,
   getOrderedLevels,
   getStatusLabel,
 } from "@/engine";
@@ -24,32 +25,38 @@ export function JourneyMap() {
 
   return (
     <main className="mx-auto flex w-full max-w-lg flex-1 flex-col gap-9 px-4 py-8 sm:px-6 sm:py-10">
-      <div className="flex justify-end">
-        <SoundToggle />
-      </div>
-
-      <PageHeader
-        eyebrow={experience.title}
-        title={`Hola, ${experience.recipientName}`}
-        description={`Progreso del viaje: ${percent}%`}
-      >
-        <div
-          className="mt-1 h-1.5 w-full max-w-sm overflow-hidden rounded-full bg-white/10"
-          role="progressbar"
-          aria-valuenow={percent}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-label="Progreso del viaje"
-        >
-          <div
-            className="h-full rounded-full bg-[var(--accent)] transition-all duration-500 ease-[var(--ease-out-expo)] motion-reduce:transition-none"
-            style={{
-              width: `${percent}%`,
-              boxShadow: "0 0 16px var(--glow)",
-            }}
-          />
+      <div className="relative pr-10">
+        <div className="absolute top-0 right-0 z-10">
+          <SoundToggle />
         </div>
-      </PageHeader>
+
+        <PageHeader
+          title={`Hola, ${experience.recipientName}`}
+          description="Te estaba esperando. Aquí empieza tu experiencia, suerte!"
+        >
+          <div className="mt-2 w-full max-w-sm">
+            <p className="mb-1.5 text-sm text-[var(--muted)]">
+              Progreso: {percent}%
+            </p>
+            <div
+              className="h-1.5 w-full overflow-hidden rounded-full bg-white/10"
+              role="progressbar"
+              aria-valuenow={percent}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label="Progreso"
+            >
+              <div
+                className="h-full rounded-full bg-[var(--accent)] transition-all duration-500 ease-[var(--ease-out-expo)] motion-reduce:transition-none"
+                style={{
+                  width: `${percent}%`,
+                  boxShadow: "0 0 16px var(--glow)",
+                }}
+              />
+            </div>
+          </div>
+        </PageHeader>
+      </div>
 
       <ol className="flex flex-col gap-3" aria-label="Lista de niveles">
         {levels.map((level, index) => {
@@ -81,7 +88,8 @@ export function JourneyMap() {
                       {level.title}
                     </span>
                     <span className="mt-0.5 block text-sm text-[var(--muted)]">
-                      {level.subtitle ?? level.type} · {getStatusLabel(status)}
+                      {level.subtitle ?? getLevelTypeLabel(level.type)} ·{" "}
+                      {getStatusLabel(status)}
                     </span>
                   </span>
                 </Surface>
@@ -95,7 +103,7 @@ export function JourneyMap() {
         variant="ghost"
         size="sm"
         onClick={resetJourney}
-        className="self-start"
+        className="self-center"
       >
         Reiniciar progreso
       </Button>

@@ -7,6 +7,8 @@ import type { Experience, Level, MemoryItemContent } from "@/types";
 import { Button } from "@/components/shared/Button";
 import { Surface } from "@/components/shared/Surface";
 import { LevelShell } from "../LevelShell";
+import { FitMedia } from "../FitMedia";
+import { normalizeDisplayText } from "@/lib/display-text";
 
 type Props = {
   experience: Experience;
@@ -18,7 +20,7 @@ type Props = {
 function asMemory(content: unknown): MemoryItemContent {
   const c = (content ?? {}) as MemoryItemContent;
   return {
-    title: c.title ?? c.text ?? "Memoria",
+    title: c.title ?? c.text ?? "Recuerdo",
     description: c.description,
     text: c.text,
     src: c.src,
@@ -58,7 +60,7 @@ export function MemoryLevel({ experience, level, onComplete, onExit }: Props) {
       </p>
 
       <div className="grid grid-cols-2 gap-3">
-        {memories.map((memory, index) => {
+        {memories.map((memory) => {
           const isOpen = revealed.has(memory.id);
           return (
             <button
@@ -69,16 +71,44 @@ export function MemoryLevel({ experience, level, onComplete, onExit }: Props) {
             >
               <Surface
                 interactive
-                className={`flex min-h-28 flex-col justify-end p-4 transition ${
-                  isOpen ? "border-[var(--accent)]/50 bg-[var(--accent-soft)]" : ""
+                className={`relative flex min-h-32 flex-col overflow-hidden p-0 transition ${
+                  isOpen
+                    ? "justify-end border-[var(--accent)]/50"
+                    : "justify-center"
                 }`}
               >
-                <span className="font-mono text-[0.65rem] tracking-widest text-[var(--muted)] uppercase">
-                  Memory {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="font-display mt-1 text-lg leading-tight">
-                  {isOpen ? memory.title : "•••"}
-                </span>
+                {isOpen && memory.src ? (
+                  <>
+                    <FitMedia
+                      src={memory.src}
+                      alt={memory.alt ?? memory.title}
+                      fill
+                      className="absolute inset-0 rounded-none bg-black/50 shadow-none"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
+                  </>
+                ) : (
+                  <div
+                    className={`absolute inset-0 ${
+                      isOpen ? "bg-[var(--accent-soft)]" : "bg-white/[0.03]"
+                    }`}
+                  />
+                )}
+                <div
+                  className={`relative z-10 p-4 ${
+                    isOpen ? "" : "flex flex-1 items-center justify-center"
+                  }`}
+                >
+                  {isOpen ? (
+                    <span className="font-display block text-lg leading-tight text-white">
+                      {memory.title}
+                    </span>
+                  ) : (
+                    <span className="block text-center text-[0.7rem] tracking-[0.18em] text-white/55 uppercase">
+                      Toca para abrir
+                    </span>
+                  )}
+                </div>
               </Surface>
             </button>
           );
@@ -92,10 +122,19 @@ export function MemoryLevel({ experience, level, onComplete, onExit }: Props) {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="mt-6 text-center"
+            className="mt-6 space-y-4 text-center"
           >
-            <p className="font-display text-xl leading-snug">
-              {active.description ?? active.text ?? active.title}
+            {active.src && (
+              <FitMedia
+                src={active.src}
+                alt={active.alt ?? active.title}
+                maxHeightClass="max-h-[min(60vh,28rem)]"
+              />
+            )}
+            <p className="font-display whitespace-pre-wrap text-xl leading-snug">
+              {normalizeDisplayText(
+                active.description ?? active.text ?? active.title,
+              )}
             </p>
           </motion.div>
         )}
@@ -103,7 +142,9 @@ export function MemoryLevel({ experience, level, onComplete, onExit }: Props) {
 
       <div className="mt-auto pt-8">
         <Button className="w-full" disabled={!allRevealed} onClick={onComplete}>
-          {allRevealed ? "Primera memoria desbloqueada" : "Explora las memorias"}
+          {allRevealed
+            ? "Recuerdos desbloqueados, a por más y mejores"
+            : "Explora los recuerdos"}
         </Button>
       </div>
     </LevelShell>

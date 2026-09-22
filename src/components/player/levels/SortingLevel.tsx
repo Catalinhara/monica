@@ -1,11 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { getLevelScenes } from "@/engine";
-import type { Experience, Level, SortingItemContent, SortingLevelContent } from "@/types";
+import type { Experience, Level, PuzzleItemContent, SortingLevelContent } from "@/types";
 import { Button } from "@/components/shared/Button";
-import { Surface } from "@/components/shared/Surface";
 import { LevelShell } from "../LevelShell";
+import { FitMedia } from "../FitMedia";
+import { normalizeDisplayText } from "@/lib/display-text";
+
+const GRID = 3;
+const TARGET_PUZZLES = 4;
 
 type Props = {
   experience: Experience;
@@ -14,159 +18,297 @@ type Props = {
   onExit: () => void;
 };
 
-function loadItems(level: Level): { prompt: string; items: SortingItemContent[] } {
+type PuzzleSpec = {
+  id: string;
+  prompt: string;
+  src: string;
+  alt: string;
+  successMessage: string;
+};
+
+function loadPuzzles(level: Level): PuzzleSpec[] {
   const scenes = getLevelScenes(level);
+  const defaults = {
+    prompt: "Recompón este recuerdo.",
+    successMessage: "Así era ese momento.",
+  };
+
   const bundle = scenes.find((s) => {
     const c = s.content as SortingLevelContent;
-    return Array.isArray(c?.items);
+    return Array.isArray(c?.puzzles) && c.puzzles.length > 0;
   });
 
   if (bundle) {
     const c = bundle.content as SortingLevelContent;
-    return {
-      prompt: c.prompt ?? "Pon nuestra historia en orden.",
-      items: c.items,
-    };
+    return (c.puzzles ?? [])
+      .filter((p): p is PuzzleItemContent => Boolean(p?.src))
+      .slice(0, TARGET_PUZZLES)
+      .map((p, index) => ({
+        id: `puzzle-${index}`,
+        prompt: p.prompt ?? c.prompt ?? defaults.prompt,
+        src: p.src,
+        alt: p.alt ?? `Puzzle ${index + 1}`,
+        successMessage: p.successMessage ?? defaults.successMessage,
+      }));
   }
 
-  const items = scenes.map((scene, index) => {
-    const c = scene.content as SortingItemContent & { text?: string };
-    return {
-      id: c.id ?? scene.id,
-      label: c.label ?? c.text ?? `Momento ${index + 1}`,
-      correctOrder: c.correctOrder ?? index,
-      description: c.description,
-    };
-  });
-
-  return { prompt: "Pon nuestra historia en orden.", items };
+  return scenes
+    .map((scene, index) => {
+      const c = scene.content as SortingLevelContent;
+      if (!c?.src || !String(c.src).trim()) return null;
+      return {
+        id: scene.id ?? `puzzle-${index}`,
+        prompt: c.prompt ?? defaults.prompt,
+        src: c.src,
+        alt: c.alt ?? `Puzzle ${index + 1}`,
+        successMessage: c.successMessage ?? defaults.successMessage,
+      };
+    })
+    .filter((p): p is PuzzleSpec => p !== null)
+    .slice(0, TARGET_PUZZLES);
 }
 
-function shuffle<T>(list: T[]): T[] {
-  const copy = [...list];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
+function shuffleBoard(): number[] {
+  const solved = Array.from({ length: GRID * GRID }, (_, i) => i);
+  let board = [...solved];
+
+  for (let attempt = 0; attempt < 40; attempt += 1) {
+    board = [...solved];
+    for (let i = board.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [board[i], board[j]] = [board[j], board[i]];
+    }
+    if (!board.every((piece, index) => piece === index)) return board;
   }
-  return copy;
+
+  [board[0], board[1]] = [board[1], board[0]];
+  return board;
+}
+
+function tileBackgroundPosition(piece: number): string {
+  const col = piece % GRID;
+  const row = Math.floor(piece / GRID);
+  const step = 100 / (GRID - 1);
+  return `${col * step}% ${row * step}%`;
+}
+
+function SinglePuzzle({
+  puzzle,
+  index,
+  total,
+  onSolved,
+  onSolvedChange,
+}: {
+  puzzle: PuzzleSpec;
+  index: number;
+  total: number;
+  onSolved: () => void;
+  onSolvedChange?: (solved: boolean) => void;
+}) {
+  const [board, setBoard] = useState(shuffleBoard);
+  const [selected, setSelected] = useState<number | null>(null);
+  const [solved, setSolved] = useState(false);
+  const [moves, setMoves] = useState(0);
+
+  useEffect(() => {
+    setBoard(shuffleBoard());
+    setSelected(null);
+    setSolved(false);
+    setMoves(0);
+    onSolvedChange?.(false);
+    // Reset only when the puzzle image changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- avoid reset loops
+  }, [puzzle.id, puzzle.src]);
+
+  const handleTile = useCallback(
+    (slot: number) => {
+      if (solved) return;
+
+      if (selected === null) {
+        setSelected(slot);
+        return;
+      }
+
+      if (selected === slot) {
+        setSelected(null);
+        return;
+      }
+
+      const from = selected;
+      setSelected(null);
+      setMoves((m) => m + 1);
+
+      setBoard((prev) => {
+        const next = [...prev];
+        [next[from], next[slot]] = [next[slot], next[from]];
+        return next;
+      });
+    },
+    [selected, solved],
+  );
+
+  useEffect(() => {
+    if (solved) return;
+    const done = board.every((piece, i) => piece === i);
+    if (!done) return;
+    setSolved(true);
+    onSolvedChange?.(true);
+  }, [board, solved, onSolvedChange]);
+
+  function reshuffle() {
+    setBoard(shuffleBoard());
+    setSelected(null);
+    setSolved(false);
+    onSolvedChange?.(false);
+    setMoves(0);
+  }
+
+  return (
+    <>
+      <p className="mb-5 text-center font-display text-2xl leading-snug text-[var(--foreground)]">
+        {normalizeDisplayText(puzzle.prompt)}
+      </p>
+
+      {solved ? (
+        <p className="mb-5 text-center text-sm text-[var(--muted)]">
+          ¡Completado!
+          {moves > 0 ? ` · ${moves} movimientos` : null}
+        </p>
+      ) : moves > 0 ? (
+        <p className="mb-5 text-center text-sm text-[var(--muted)]">
+          {moves} movimientos
+        </p>
+      ) : null}
+
+      {solved ? (
+        <div className="space-y-4">
+          <FitMedia
+            src={puzzle.src}
+            alt={puzzle.alt}
+            maxHeightClass="max-h-[min(70vh,28rem)]"
+          />
+          <p className="font-display text-center text-xl leading-snug text-[var(--accent)]">
+            {normalizeDisplayText(puzzle.successMessage)}
+          </p>
+        </div>
+      ) : (
+        <div
+          className="mx-auto aspect-square w-full max-w-md overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-black/40 shadow-[var(--shadow-soft)]"
+          style={{
+            display: "grid",
+            gridTemplateColumns: `repeat(${GRID}, 1fr)`,
+            gap: "2px",
+          }}
+          role="grid"
+          aria-label={`Puzzle ${index + 1} de ${total}, 3 por 3`}
+        >
+          {board.map((piece, slot) => {
+            const isSelected = selected === slot;
+            return (
+              <button
+                key={`${puzzle.id}-${slot}-${piece}`}
+                type="button"
+                role="gridcell"
+                aria-label={`Pieza ${piece + 1}${isSelected ? ", seleccionada" : ""}`}
+                aria-pressed={isSelected}
+                onClick={() => handleTile(slot)}
+                className={`relative aspect-square overflow-hidden transition ${
+                  isSelected
+                    ? "ring-2 ring-[var(--accent)] ring-offset-1 ring-offset-[var(--background)]"
+                    : "hover:brightness-110"
+                }`}
+                style={{
+                  backgroundImage: `url(${puzzle.src})`,
+                  backgroundSize: `${GRID * 100}% ${GRID * 100}%`,
+                  backgroundPosition: tileBackgroundPosition(piece),
+                  backgroundRepeat: "no-repeat",
+                }}
+              />
+            );
+          })}
+        </div>
+      )}
+
+      <div className="mt-auto flex flex-col gap-3 pt-8">
+        {solved ? (
+          <Button className="w-full" onClick={onSolved}>
+            {index >= total - 1 ? "Continuar" : "Siguiente puzzle"}
+          </Button>
+        ) : (
+          <Button variant="secondary" className="w-full" onClick={reshuffle}>
+            Mezclar de nuevo
+          </Button>
+        )}
+      </div>
+    </>
+  );
 }
 
 export function SortingLevel({ experience, level, onComplete, onExit }: Props) {
-  const { prompt, items } = useMemo(() => loadItems(level), [level]);
-  const [order, setOrder] = useState(() => shuffle(items.map((i) => i.id)));
-  const [checked, setChecked] = useState(false);
-  const [showTimeline, setShowTimeline] = useState(false);
+  const puzzles = useMemo(() => loadPuzzles(level), [level]);
+  const [puzzleIndex, setPuzzleIndex] = useState(0);
+  const [currentSolved, setCurrentSolved] = useState(false);
 
-  const byId = useMemo(
-    () => Object.fromEntries(items.map((i) => [i.id, i])),
-    [items],
-  );
+  const total = puzzles.length;
+  const current = puzzles[puzzleIndex];
+  const progressPercent =
+    total === 0
+      ? 0
+      : Math.min(
+          100,
+          Math.round(
+            ((puzzleIndex + (currentSolved ? 1 : 0.3)) / total) * 100,
+          ),
+        );
 
-  const correct = items
-    .slice()
-    .sort((a, b) => a.correctOrder - b.correctOrder)
-    .map((i) => i.id);
-
-  const isCorrect = order.every((id, index) => id === correct[index]);
-  const progress = showTimeline ? 100 : checked && isCorrect ? 80 : 40;
-
-  function move(id: string, direction: -1 | 1) {
-    if (checked && isCorrect) return;
-    setChecked(false);
-    setOrder((prev) => {
-      const index = prev.indexOf(id);
-      const nextIndex = index + direction;
-      if (nextIndex < 0 || nextIndex >= prev.length) return prev;
-      const next = [...prev];
-      [next[index], next[nextIndex]] = [next[nextIndex], next[index]];
-      return next;
-    });
+  function advance() {
+    if (puzzleIndex >= total - 1) {
+      onComplete();
+      return;
+    }
+    setCurrentSolved(false);
+    setPuzzleIndex((i) => i + 1);
   }
 
-  function check() {
-    setChecked(true);
-    if (order.every((id, index) => id === correct[index])) {
-      setShowTimeline(true);
-    }
+  if (total === 0) {
+    return (
+      <LevelShell
+        experience={experience}
+        level={level}
+        progressPercent={0}
+        onExit={onExit}
+      >
+        <p className="font-display text-center text-2xl">
+          Aún no hay puzzles configurados.
+        </p>
+        <p className="mt-3 text-center text-sm text-[var(--muted)]">
+          En el editor, añade 3 escenas con foto (campo{" "}
+          <code className="text-[var(--accent)]">src</code> en cada una).
+        </p>
+        <div className="mt-auto pt-8">
+          <Button variant="secondary" className="w-full" onClick={onExit}>
+            Volver al mapa
+          </Button>
+        </div>
+      </LevelShell>
+    );
   }
 
   return (
     <LevelShell
       experience={experience}
       level={level}
-      progressPercent={progress}
+      progressPercent={progressPercent}
       onExit={onExit}
     >
-      <p className="font-display mb-6 text-center text-2xl">{prompt}</p>
-
-      {!showTimeline ? (
-        <ol className="flex flex-col gap-2">
-          {order.map((id, index) => {
-            const item = byId[id];
-            const wrong = checked && id !== correct[index];
-            return (
-              <li key={id}>
-                <Surface
-                  className={`flex items-center gap-3 px-3 py-3 ${
-                    wrong ? "border-red-400/40" : checked ? "border-emerald-400/40" : ""
-                  }`}
-                >
-                  <span className="font-mono w-6 text-sm text-[var(--muted)]">
-                    {index + 1}
-                  </span>
-                  <span className="flex-1 text-sm font-medium">{item.label}</span>
-                  <div className="flex gap-1">
-                    <button
-                      type="button"
-                      aria-label="Subir"
-                      className="h-8 w-8 rounded-full border border-[var(--border)] text-sm disabled:opacity-30"
-                      disabled={index === 0}
-                      onClick={() => move(id, -1)}
-                    >
-                      ↑
-                    </button>
-                    <button
-                      type="button"
-                      aria-label="Bajar"
-                      className="h-8 w-8 rounded-full border border-[var(--border)] text-sm disabled:opacity-30"
-                      disabled={index === order.length - 1}
-                      onClick={() => move(id, 1)}
-                    >
-                      ↓
-                    </button>
-                  </div>
-                </Surface>
-              </li>
-            );
-          })}
-        </ol>
-      ) : (
-        <ol className="flex flex-col items-center gap-2 py-4">
-          {correct.map((id, index) => (
-            <li key={id} className="flex flex-col items-center">
-              <span className="font-display text-lg tracking-wide">
-                {byId[id].label}
-              </span>
-              {index < correct.length - 1 && (
-                <span className="my-1 text-[var(--muted)]">↓</span>
-              )}
-            </li>
-          ))}
-        </ol>
-      )}
-
-      <div className="mt-auto flex flex-col gap-3 pt-8">
-        {!showTimeline ? (
-          <Button onClick={check}>Comprobar orden</Button>
-        ) : (
-          <Button onClick={onComplete}>Continuar</Button>
-        )}
-        {checked && !isCorrect && (
-          <p className="text-center text-sm text-[var(--muted)]">
-            Casi… reordena y vuelve a comprobar.
-          </p>
-        )}
-      </div>
+      <SinglePuzzle
+        key={current.id}
+        puzzle={current}
+        index={puzzleIndex}
+        total={total}
+        onSolved={advance}
+        onSolvedChange={setCurrentSolved}
+      />
     </LevelShell>
   );
 }

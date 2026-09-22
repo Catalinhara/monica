@@ -32,7 +32,10 @@ type ExperienceSessionState = {
   enterLevel: (levelId: string) => boolean;
   nextScene: () => void;
   prevScene: () => void;
-  completeCurrentLevel: () => void;
+  completeCurrentLevel: (meta?: {
+    selectedOptionId?: string;
+    selectedOptionLabel?: string;
+  }) => void;
   acceptProposal: () => void;
   finishCelebration: () => void;
   resetJourney: () => void;
@@ -61,7 +64,7 @@ export const useExperienceSession = create<ExperienceSessionState>((set, get) =>
   phase: "boot",
   hydrated: false,
 
-  boot: (experienceId = "exp-demo-001", options) => {
+  boot: (experienceId = "exp-monica-001", options) => {
     const experience = loadExperience(experienceId, {
       preview: options?.preview,
     });
@@ -127,15 +130,31 @@ export const useExperienceSession = create<ExperienceSessionState>((set, get) =>
     set({ sceneIndex: sceneIndex - 1 });
   },
 
-  completeCurrentLevel: () => {
+  completeCurrentLevel: (meta) => {
     const { experience, progress, currentLevelId } = get();
     if (!experience || !currentLevelId) return;
 
-    const nextProgress = completeLevelProgress(
+    let nextProgress = completeLevelProgress(
       experience,
       progress,
       currentLevelId,
     );
+
+    if (meta?.selectedOptionId || meta?.selectedOptionLabel) {
+      const current = nextProgress[currentLevelId];
+      if (current) {
+        nextProgress = {
+          ...nextProgress,
+          [currentLevelId]: {
+            ...current,
+            selectedOptionId: meta.selectedOptionId ?? current.selectedOptionId,
+            selectedOptionLabel:
+              meta.selectedOptionLabel ?? current.selectedOptionLabel,
+          },
+        };
+      }
+    }
+
     persistProgress(experience.id, nextProgress);
 
     const level = getLevelById(experience, currentLevelId);

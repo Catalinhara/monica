@@ -26,4 +26,5 @@ export const STORAGE_KEYS = {
   experiencePublished: "rj:experience:published",
   playerProgress: "rj:player:progress",
   soundMuted: "rj:prefs:sound-muted",
+  assets: "rj:assets",
 } as const;

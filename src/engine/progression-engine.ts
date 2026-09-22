@@ -165,3 +165,28 @@ export function getStatusLabel(status: LevelStatus): string {
       return "Completado";
   }
 }
+
+export function getLevelTypeLabel(type: Level["type"]): string {
+  switch (type) {
+    case "story":
+      return "Historia";
+    case "memory":
+      return "Recuerdos";
+    case "quiz":
+      return "Preguntas";
+    case "sorting":
+      return "Ordenar";
+    case "choice":
+      return "Elección";
+    case "compatibility":
+      return "Compatibilidad";
+    case "timeline":
+      return "Línea de tiempo";
+    case "gallery":
+      return "Galería";
+    case "interactive":
+      return "Interactivo";
+    case "final":
+      return "Final";
+  }
+}

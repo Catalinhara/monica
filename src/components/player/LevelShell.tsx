@@ -32,9 +32,9 @@ export function LevelShell({
   const totalLevels = getOrderedLevels(experience).length;
 
   return (
-    <main className="mx-auto flex w-full max-w-lg flex-1 flex-col px-6 py-8">
+    <main className="mx-auto flex min-h-0 w-full max-w-lg flex-1 flex-col px-6 py-6">
       {!minimal && (
-        <header className="mb-6 flex items-start justify-between gap-4">
+        <header className="mb-4 flex shrink-0 items-start justify-between gap-4">
           <div>
             <p className="text-[0.7rem] font-medium tracking-[0.28em] uppercase text-[var(--muted)]">
               Nivel {levelNumber + 1} / {totalLevels}
@@ -52,7 +52,7 @@ export function LevelShell({
 
       {!hideProgress && !minimal && (
         <div
-          className="mb-6 h-1 overflow-hidden rounded-full bg-white/10"
+          className="mb-4 h-1 shrink-0 overflow-hidden rounded-full bg-white/10"
           role="progressbar"
           aria-valuenow={Math.round(progressPercent)}
           aria-valuemin={0}
@@ -69,7 +69,7 @@ export function LevelShell({
         </div>
       )}
 
-      <div className="relative flex flex-1 flex-col">{children}</div>
+      <div className="relative flex min-h-0 flex-1 flex-col">{children}</div>
     </main>
   );
 }

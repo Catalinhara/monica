@@ -17,7 +17,7 @@ Experiencia web interactiva romántica (player + admin editor) construida con Ne
 
 ```
 src/
-  app/           # Rutas: / (hub), /play, /admin
+  app/           # Rutas: /monica (experiencia), /admin (editor), /play redirige a /monica
   engine/        # Experience Engine (Fase 1+)
   types/         # Modelos Level, Experience, Scene…
   stores/        # Zustand (progreso, etc.)
@@ -48,6 +48,10 @@ npm run lint
 5. Polish — sonido, partículas, a11y, responsive, E2E
 
 Ver checklist manual: [TEST_PLAN.md](./TEST_PLAN.md)
+
+## Producción (VPS)
+
+Docker + Caddy en `www.enigmademonica.es`: ver [deploy/README.md](./deploy/README.md).
 
 ## Documentación de origen
 

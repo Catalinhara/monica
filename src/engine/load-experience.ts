@@ -1,8 +1,14 @@
 import type { Experience } from "@/types";
-import { resolvePlayExperience, loadDraftExperience, getSeedExperience } from "@/lib/experience-repository";
+import {
+  resolvePlayExperience,
+  loadDraftExperience,
+  getSeedExperience,
+  MONICA_EXPERIENCE_ID,
+  DEMO_EXPERIENCE_ID,
+} from "@/lib/experience-repository";
 
 export function loadExperience(
-  id = "exp-demo-001",
+  id = MONICA_EXPERIENCE_ID,
   options?: { preview?: boolean },
 ): Experience {
   if (options?.preview) {
@@ -14,5 +20,5 @@ export function loadExperience(
 }
 
 export function listExperienceIds(): string[] {
-  return ["exp-demo-001"];
+  return [MONICA_EXPERIENCE_ID, DEMO_EXPERIENCE_ID];
 }

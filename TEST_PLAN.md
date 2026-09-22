@@ -20,7 +20,7 @@ Chrome DevTools → modo móvil (~375px) para el player.
 
 | # | Qué hacer | OK si… |
 |---|-----------|--------|
-| A1 | `/` → **Empezar el viaje** | Entras a `/play` con mapa de 9 niveles |
+| A1 | Abrir `/monica` | Mapa con 9 niveles, saludo a Mónica, sin editor |
 | A2 | Solo Level 0 habilitado | El resto aparecen bloqueados |
 | A3 | Completa Level 0 (escenas) | Vuelves al mapa; Level 1 desbloqueado |
 | A4 | Memory → revela las 4 | CTA se activa y avanza |
@@ -30,7 +30,7 @@ Chrome DevTools → modo móvil (~375px) para el player.
 | A8 | Connection + Dance (8 toques) + Future | Mecánicas distintas funcionan |
 | A9 | Final: pulsa **No** varias veces | Mensajes + botón se mueve |
 | A10 | Pulsa **Sí** | Celebración → recompensa |
-| A11 | Refresca `/play` a mitad de viaje | Progreso sigue guardado |
+| A11 | Refresca `/monica` a mitad de viaje | Progreso sigue guardado |
 | A12 | **Reiniciar progreso** | Solo Level 0 disponible |
 | A13 | Toggle **Sonido on/off** | Preferencia se mantiene al refrescar |
 
@@ -40,19 +40,22 @@ Chrome DevTools → modo móvil (~375px) para el player.
 |---|-----------|--------|
 | B1 | Abre `/admin` | Panel **Experiencia** + Save / Publish / Preview |
 | B2 | Cambia título o nombre destinataria | Aparece “Cambios sin guardar” |
-| B3 | **Save draft** → **Preview** | `/play?preview=1` con banner PREVIEW |
+| B3 | **Save draft** → **Preview** | `/monica?preview=1` con banner de vista previa |
 | B4 | En preview, el nombre/título refleja el draft | Borrador visible sin publicar |
 | B5 | Vuelve a `/admin`, edita un nivel (JSON/título) | Se guarda en draft |
 | B6 | **Publish** | Mensaje de versión |
-| B7 | Abre `/play` (sin preview) | Ves la versión publicada |
+| B7 | Abre `/monica` (sin preview) | Ves la versión publicada |
 | B8 | Panel Final: cambia un mensaje del No | Se refleja en preview/play tras save/publish |
 | B9 | Versiones → Restaurar (si hay snapshot) | Borrador vuelve al snapshot |
+| B10 | Panel **Assets** → subir 1–2 fotos | Thumbnails en el grid; URL `/assets/uploads/...` |
+| B11 | Nivel Memory → **Elegir asset** en una escena | `src` queda en el JSON; Preview muestra la foto |
+| B12 | Eliminar asset desde Assets | Desaparece del catálogo y del disco local |
 
 ### Smoke automático (opcional)
 
 ```bash
 npm run test        # unitarios
-npm run test:e2e    # 6 smoke Playwright
+npm run test:e2e    # smoke Playwright (incluye panel Assets)
 ```
 
 ### Notas
@@ -67,7 +70,7 @@ npm run test:e2e    # 6 smoke Playwright
 | # | Prueba | Resultado esperado |
 |---|--------|--------------------|
 | 0.1 | `npm run dev` arranca sin error | Servidor en `:3000` |
-| 0.2 | Abrir `/` | Hub con título Romantic Journey + 2 enlaces |
+| 0.2 | Abrir `/` | Redirige a `/monica` |
 | 0.3 | Clic en Player Experience | Navega a `/play` |
 | 0.4 | Clic en Admin Editor | Navega a `/admin` |
 | 0.5 | `npm run test` | Vitest pasa |
@@ -134,8 +137,8 @@ npm run test:e2e    # 6 smoke Playwright
 | 4.2 | Editar título / destinataria / tema | Dirty state; Save draft persiste |
 | 4.3 | Seleccionar nivel | Editor de metadatos + JSON de content |
 | 4.4 | Add / duplicate / reorder / delete nivel | Lista lateral se actualiza |
-| 4.5 | Preview | `/play?preview=1` muestra borrador con banner |
-| 4.6 | Publish | Mensaje de versión; `/play` sin preview usa published |
+| 4.5 | Preview | `/monica?preview=1` muestra borrador con banner |
+| 4.6 | Publish | Mensaje de versión; `/monica` sin preview usa published |
 | 4.7 | Restaurar versión | Borrador vuelve al snapshot |
 | 4.8 | Pregunta final / No messages | Editable desde panel Final |
 | 4.9 | Assets panel | Stub visible (placeholders) |
@@ -160,11 +163,11 @@ npm run test:e2e    # 6 smoke Playwright
 
 ## Regresión rápida (cada fase)
 
-1. Hub `/` sigue enlazando bien  
-2. `/play` no rompe progreso guardado  
+1. `/` redirige a `/monica`  
+2. `/monica` no rompe progreso guardado  
 3. `npm run test` + `npm run build` OK  
 
 ## Notas
 
-- Limpiar progreso: en `/play` → “Reiniciar progreso”, o borrar keys `rj:player:progress:*` en LocalStorage.  
+- Limpiar progreso: en `/monica` → “Reiniciar progreso”, o borrar keys `rj:player:progress:*` en LocalStorage.  
 - Playwright browsers: `npx playwright install` antes de E2E.

@@ -1,6 +1,8 @@
 "use client";
 
 import type { Scene } from "@/types";
+import { FitMedia } from "./FitMedia";
+import { normalizeDisplayText } from "@/lib/display-text";
 
 type TextContent = {
   text?: string;
@@ -25,15 +27,10 @@ export function SceneView({ scene }: { scene: Scene }) {
   if (scene.type === "image" && content.src) {
     return (
       <figure className="space-y-5 text-center">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={content.src}
-          alt={content.alt ?? ""}
-          className="mx-auto max-h-80 w-full rounded-[var(--radius-lg)] object-cover shadow-[var(--shadow-soft)]"
-        />
+        <FitMedia src={content.src} alt={content.alt ?? ""} />
         {content.text && (
-          <figcaption className="font-display text-xl leading-relaxed text-[var(--foreground)]">
-            {content.text}
+          <figcaption className="font-display whitespace-pre-wrap text-xl leading-relaxed text-[var(--foreground)]">
+            {normalizeDisplayText(content.text)}
           </figcaption>
         )}
       </figure>
@@ -42,8 +39,8 @@ export function SceneView({ scene }: { scene: Scene }) {
 
   return (
     <div className="space-y-6 text-center">
-      <p className="font-display text-3xl leading-snug text-[var(--foreground)] sm:text-4xl">
-        {content.text ?? "…"}
+      <p className="font-display whitespace-pre-wrap text-3xl leading-snug text-[var(--foreground)] sm:text-4xl">
+        {normalizeDisplayText(content.text ?? "…")}
       </p>
       {content.cta && (
         <p className="text-sm font-medium tracking-[0.12em] text-[var(--accent)] uppercase">

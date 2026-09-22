@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import {
   getLevelById,
 } from "@/engine";
@@ -13,6 +14,14 @@ import { CompatibilityLevel } from "./levels/CompatibilityLevel";
 import { ChoiceLevel } from "./levels/ChoiceLevel";
 import { InteractiveLevel } from "./levels/InteractiveLevel";
 import { FinalLevel } from "./levels/FinalLevel";
+import {
+  ConnectionLevel,
+  isConnectionLevel,
+} from "./levels/ConnectionLevel";
+
+function wrap(node: ReactNode) {
+  return <div className="flex min-h-0 flex-1 flex-col">{node}</div>;
+}
 
 export function LevelPlayer() {
   const experience = useExperienceSession((s) => s.experience)!;
@@ -48,36 +57,39 @@ export function LevelPlayer() {
   switch (level.type) {
     case "memory":
     case "gallery":
-      return <MemoryLevel {...shared} />;
+      return wrap(<MemoryLevel {...shared} />);
     case "quiz":
-      return <QuizLevel {...shared} />;
+      return wrap(<QuizLevel {...shared} />);
     case "sorting":
     case "timeline":
-      return <SortingLevel {...shared} />;
+      return wrap(<SortingLevel {...shared} />);
     case "compatibility":
-      return <CompatibilityLevel {...shared} />;
+      return wrap(<CompatibilityLevel {...shared} />);
     case "choice":
-      return <ChoiceLevel {...shared} />;
+      return wrap(<ChoiceLevel {...shared} />);
     case "interactive":
-      return <InteractiveLevel {...shared} />;
+      return wrap(<InteractiveLevel {...shared} />);
     case "final":
-      return (
+      return wrap(
         <FinalLevel
           experience={experience}
           level={level}
           onAccept={acceptProposal}
           onExit={openMap}
-        />
+        />,
       );
     case "story":
     default:
-      return (
+      if (isConnectionLevel(level)) {
+        return wrap(<ConnectionLevel {...shared} />);
+      }
+      return wrap(
         <StoryLevel
           {...shared}
           sceneIndex={sceneIndex}
           onNext={nextScene}
           onPrev={prevScene}
-        />
+        />,
       );
   }
 }

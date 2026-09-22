@@ -1,0 +1,18 @@
+services:
+  monica:
+    build: .
+    container_name: enigmademonica
+    restart: unless-stopped
+    ports:
+      # Solo localhost: Caddy hace el TLS y el proxy. No exponer 3847 a Internet.
+      - "127.0.0.1:3847:3000"
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      HOSTNAME: "0.0.0.0"
+    volumes:
+      # Persistencia admin + media (monica.json, fotos, premios, audio)
+      - ./content:/app/content
+      - ./public/assets:/app/public/assets
+      - ./public/prizes:/app/public/prizes
+      - ./public/audio:/app/public/audio

@@ -1,0 +1,11 @@
+# Pegar al FINAL del Caddyfile de la VPS.
+# No modificar los site blocks de los otros proyectos.
+
+enigmademonica.es {
+	redir https://www.enigmademonica.es{uri} permanent
+}
+
+www.enigmademonica.es {
+	encode gzip
+	reverse_proxy 127.0.0.1:3847
+}

@@ -19,11 +19,17 @@ export function ExperiencePlayer() {
   const experience = useExperienceSession((s) => s.experience);
 
   useEffect(() => {
-    try {
-      boot("exp-demo-001", { preview });
-    } catch (error) {
-      console.error("Failed to boot experience", error);
+    function reload() {
+      try {
+        boot("exp-monica-001", { preview });
+      } catch (error) {
+        console.error("Failed to boot experience", error);
+      }
     }
+
+    reload();
+    window.addEventListener("rj:experience-updated", reload);
+    return () => window.removeEventListener("rj:experience-updated", reload);
   }, [boot, preview]);
 
   if (!hydrated || !experience) {
@@ -44,7 +50,7 @@ export function ExperiencePlayer() {
           role="status"
           className="sticky top-0 z-30 flex flex-wrap items-center justify-center gap-3 border-b border-[var(--accent)]/30 bg-[var(--accent-soft)] px-4 py-2 text-center text-xs tracking-wide text-[var(--accent)]"
         >
-          <span>PREVIEW · borrador del Admin Editor (progreso no se persiste)</span>
+          <span>Vista previa · borrador del editor (el progreso no se guarda)</span>
         </div>
       )}
       <AnimatePresence mode="wait">

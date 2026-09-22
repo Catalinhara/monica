@@ -1,12 +1,12 @@
 {
   "id": "exp-demo-001",
-  "title": "Romantic Journey",
-  "recipientName": "Tú",
-  "status": "draft",
-  "version": 2,
+  "title": "Viaje romántico",
+  "recipientName": "Mónica",
+  "status": "published",
+  "version": 6,
   "theme": {
     "id": "romantic-night",
-    "name": "Romantic Night",
+    "name": "Noche romántica",
     "colors": {
       "background": "#120810",
       "foreground": "#f7eef4",
@@ -23,14 +23,16 @@
       "id": "level-0",
       "order": 0,
       "title": "El comienzo",
-      "subtitle": "The Beginning",
+      "subtitle": "El inicio",
       "type": "story",
       "active": true,
       "content": [
         {
           "id": "scene-0-1",
           "type": "text",
-          "content": { "text": "He preparado algo para ti." }
+          "content": {
+            "text": "He preparado algo para ti."
+          }
         },
         {
           "id": "scene-0-2",
@@ -48,13 +50,15 @@
           }
         }
       ],
-      "completion": { "type": "all-scenes" }
+      "completion": {
+        "type": "all-scenes"
+      }
     },
     {
       "id": "level-1",
       "order": 1,
       "title": "Descubrirnos",
-      "subtitle": "Memories",
+      "subtitle": "Recuerdos",
       "type": "memory",
       "active": true,
       "content": [
@@ -62,43 +66,76 @@
           "id": "mem-1",
           "type": "text",
           "content": {
-            "title": "El primer mensaje",
-            "description": "Una conversación que no quería terminar."
+            "title": "Shopping y cena...",
+            "description": "Nuestra primera tarde, entre ofertas de bañadores… confusión con la ropa de chicas, busqueda de neveritas o regalos personalizados para tu amiga, terminando con copas hasta muy tarde en un sofá…/n/n Todo nos llevó a nuestro primer beso, en un banco público, de madrugada, hablando de la vida y yo, completamente fascinado por tu mirada",
+            "src": "/assets/uploads/exp-demo-001/1789646494308-whatsapp-image-2026-09-17-at-134141-3.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.41.41 (3).jpeg"
           }
         },
         {
           "id": "mem-2",
           "type": "text",
           "content": {
-            "title": "La primera risa",
-            "description": "Ese momento en el que todo se volvió fácil."
+            "title": "Barcos, remos, patos y risas",
+            "description": "Desde los primeros días me regalaste nuevas experiencias y momentos divertidos.\n\nPero hay recuerdos que se quedan de una forma especial. Como la luna de aquella noche, las estrellas y...tú, tumbada en ese banquillo, mirándolas...",
+            "src": "/assets/uploads/exp-demo-001/1789646492465-whatsapp-image-2026-09-17-at-134140-6.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.41.40 (6).jpeg"
           }
         },
         {
           "id": "mem-3",
           "type": "text",
           "content": {
-            "title": "Un café",
-            "description": "Horas que pasaron como minutos."
+            "title": "Primera escapada...",
+            "description": "Experiencias rurales, un hotel-museo, atardeceres con alma y… montar, pero no a caballo🤭.\n\nNuestra primera mañana juntos, pasando la prueba de fuego… verte sin maquillaje. Natural, recién despierta, y aun así preciosa como nunca.\n\nY por más grande que fuera aquella cama, parece que hasta dormido te estaba buscando, pegado a ti toda la noche ❤️",
+            "src": "/assets/uploads/exp-demo-001/1789646487621-whatsapp-image-2026-09-17-at-134139-5.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.41.39 (5).jpeg"
           }
         },
         {
           "id": "mem-4",
           "type": "text",
           "content": {
-            "title": "Hoy",
-            "description": "Y aquí estamos, escribiendo el siguiente capítulo."
+            "title": "Nuestra sesión de fotos casera",
+            "description": "Una salida improvisada, una cámara y un desfile por el pasillo con nosotros dos demasiado arreglados para la ocasión… muy nosotros, muy rumanos 😂. Entre fotos, risas y alguna que otra pose improvisada, terminamos haciendo el que, para mí, sigue siendo el mejor fotón de la historia.",
+            "src": "/assets/uploads/exp-demo-001/1789646499373-whatsapp-image-2026-09-17-at-134143-5.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.41.43 (5).jpeg"
+          }
+        },
+        {
+          "id": "mem-5",
+          "type": "text",
+          "content": {
+            "title": "Nuestro primer baile",
+            "description": "Y llegó nuestro primer baile… y también mi mayor miedo, porque, como bien sabes, se me da fatal 😂. Pero, aun así, quiero aprender y mejorar para descubrir contigo un mundo nuevo de sensaciones e intimidad que todavía es desconocido para mí, y que estoy deseando descubrir a tu lado.\n\nY aunque seguramente no haya sido el mejor baile, porque ni de lejos estoy a tu nivel, conseguimos destacar como si el lugar entero fuera nuestro, a pesar del cumpleaños de al lado 😂. Otro de esos momentos que, sin hacer demasiado ruido, terminan quedándose para siempre.",
+            "src": "/assets/uploads/exp-demo-001/1789646501292-whatsapp-image-2026-09-17-at-134143-1.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.41.43 (1).jpeg"
+          }
+        },
+        {
+          "id": "mem-6",
+          "type": "text",
+          "content": {
+            "title": "Descubriendo nuestro sitios especiales",
+            "description": "Poco a poco fuimos encontrando esos lugares que, sin saber muy bien por qué, empezaron a sentirse un poquito nuestros. Porque al final no es tanto el sitio… sino con quién lo compartes.",
+            "src": "/assets/uploads/exp-demo-001/1789646497019-whatsapp-image-2026-09-17-at-134142-9.jpg",
+            "alt": "WhatsApp Image 2026-09-17 at 13.41.42 (9).jpeg"
           }
         }
       ],
-      "completion": { "type": "manual" },
-      "reward": { "type": "memory", "content": "+1 memory" }
+      "completion": {
+        "type": "manual"
+      },
+      "reward": {
+        "type": "memory",
+        "content": "+1 recuerdo"
+      }
     },
     {
       "id": "level-2",
       "order": 2,
       "title": "¿Cuánto me conoces?",
-      "subtitle": "Quiz",
+      "subtitle": "Preguntas",
       "type": "quiz",
       "active": true,
       "content": [
@@ -108,9 +145,18 @@
           "content": {
             "question": "¿Qué preferiría para una cita perfecta?",
             "options": [
-              { "id": "a", "label": "Cena tranquila" },
-              { "id": "b", "label": "Bailar hasta tarde" },
-              { "id": "c", "label": "Una escapada improvisada" }
+              {
+                "id": "a",
+                "label": "Cena tranquila"
+              },
+              {
+                "id": "b",
+                "label": "Bailar hasta tarde"
+              },
+              {
+                "id": "c",
+                "label": "Una escapada improvisada"
+              }
             ],
             "correctOptionId": "b",
             "feedbackCorrect": "Sabía que lo clavabas.",
@@ -121,11 +167,20 @@
           "id": "q-2",
           "type": "question",
           "content": {
-            "question": "Mi snack secreto favorito es…",
+            "question": "Mi tentempié secreto favorito es…",
             "options": [
-              { "id": "a", "label": "Chocolate" },
-              { "id": "b", "label": "Patatas" },
-              { "id": "c", "label": "Fruta a las 2 a.m." }
+              {
+                "id": "a",
+                "label": "Chocolate"
+              },
+              {
+                "id": "b",
+                "label": "Patatas"
+              },
+              {
+                "id": "c",
+                "label": "Fruta a las 2 de la madrugada"
+              }
             ],
             "correctOptionId": "a",
             "feedback": "Detalles que importan."
@@ -137,61 +192,75 @@
           "content": {
             "question": "Si pudiéramos teletransportarnos ahora mismo…",
             "options": [
-              { "id": "a", "label": "A la playa" },
-              { "id": "b", "label": "A una pista de baile" },
-              { "id": "c", "label": "A casa, juntos" }
+              {
+                "id": "a",
+                "label": "A la playa"
+              },
+              {
+                "id": "b",
+                "label": "A una pista de baile"
+              },
+              {
+                "id": "c",
+                "label": "A casa, juntos"
+              }
             ],
             "feedback": "Cualquier destino contigo suena bien."
           }
         }
       ],
-      "completion": { "type": "manual" }
+      "completion": {
+        "type": "manual"
+      }
     },
     {
       "id": "level-3",
       "order": 3,
-      "title": "Memory Puzzle",
-      "subtitle": "Nuestra historia en orden",
+      "title": "Puzzle de recuerdos",
+      "subtitle": "Tres fotos, tres puzzles",
       "type": "sorting",
       "active": true,
       "content": [
         {
-          "id": "sort-bundle",
-          "type": "animation",
+          "id": "puzzle-1",
+          "type": "image",
           "content": {
-            "prompt": "Pon nuestra historia en orden.",
-            "items": [
-              {
-                "id": "s1",
-                "label": "FIRST MEETING",
-                "correctOrder": 0
-              },
-              {
-                "id": "s2",
-                "label": "FIRST DATE",
-                "correctOrder": 1
-              },
-              {
-                "id": "s3",
-                "label": "FIRST MEMORY",
-                "correctOrder": 2
-              },
-              {
-                "id": "s4",
-                "label": "TODAY",
-                "correctOrder": 3
-              }
-            ]
+            "prompt": "Primer recuerdo.\nToca dos piezas para intercambiarlas.",
+            "src": "/assets/uploads/exp-demo-001/1789646494308-whatsapp-image-2026-09-17-at-134141-3.jpg",
+            "alt": "Puzzle 1",
+            "successMessage": "Así se veía ese momento."
+          }
+        },
+        {
+          "id": "puzzle-2",
+          "type": "image",
+          "content": {
+            "prompt": "Segundo recuerdo.\nVuelve a recomponer la foto.",
+            "src": "/assets/uploads/exp-demo-001/1789646492465-whatsapp-image-2026-09-17-at-134140-6.jpg",
+            "alt": "Puzzle 2",
+            "successMessage": "Otro instante recuperado."
+          }
+        },
+        {
+          "id": "puzzle-3",
+          "type": "image",
+          "content": {
+            "prompt": "Tercer recuerdo.\nEl último del nivel.",
+            "src": "/assets/uploads/exp-demo-001/1789646487621-whatsapp-image-2026-09-17-at-134139-5.jpg",
+            "alt": "Puzzle 3",
+            "successMessage": "Los tres recuerdos están juntos otra vez."
           }
         }
       ],
-      "completion": { "type": "manual" }
+      "completion": {
+        "type": "manual"
+      }
     },
     {
       "id": "level-4",
       "order": 4,
-      "title": "Compatibility Lab",
-      "subtitle": "Relationship Analysis",
+      "title": "Laboratorio de compatibilidad",
+      "subtitle": "Análisis de la relación",
       "type": "compatibility",
       "active": true,
       "content": [
@@ -199,25 +268,74 @@
           "id": "compat",
           "type": "statistic",
           "content": {
-            "title": "RELATIONSHIP ANALYSIS",
-            "analyzingLabel": "Analyzing…",
+            "title": "Laboratorio de compatibilidad",
+            "introTitle": "Ahora tenemos bastantes datos para hacer un análisis.",
+            "introBody": "Recuerdos, respuestas, puzzles y un montón de momentos compartidos…\n\nEs el momento de que el experto virtual en relaciones interpersonales prepare su informe más importante.",
+            "introCta": "Empezar el análisis",
+            "analyzingTitle": "Informe en curso",
+            "analyzingLabel": "El experto virtual toma en cuenta todos los aspectos…",
+            "analyzingSteps": [
+              "Recopilando sonrisas, miradas y mensajes…",
+              "El experto virtual en relaciones interpersonales toma nota de todo…",
+              "Cruzando humor, química, caos y complicidad…",
+              "Preparando el informe confidencial…"
+            ],
+            "resultsTitle": "Resultados del análisis",
+            "resultsSubtitle": "Informe confidencial · solo para vosotros dos",
+            "overallLabel": "Compatibilidad general",
+            "attentionThreshold": 96,
+            "attentionLabel": "Se necesita más atención",
+            "closingMessage": "Veredicto: sois un caso perdido… de lo bonito.\nRecomendación oficial: seguir juntos.",
+            "verdictLabel": "Muy compatibles",
             "stats": [
-              { "name": "Humor", "percent": 97 },
-              { "name": "Chemistry", "percent": 99 },
-              { "name": "Dance", "percent": 95 },
-              { "name": "Adventure", "percent": 96 },
-              { "name": "Chaos", "percent": 100 }
+              {
+                "name": "Humor",
+                "percent": 97,
+                "description": "Nivel de risas: peligroso para los vecinos."
+              },
+              {
+                "name": "Química",
+                "percent": 99,
+                "description": "Confirmado en laboratorio."
+              },
+              {
+                "name": "Comunicación",
+                "percent": 100,
+                "description": "Os entendéis hasta en silencio."
+              },
+              {
+                "name": "Resolución de conflictos",
+                "percent": 98,
+                "description": "Discutís… y acabáis más unidos."
+              },
+              {
+                "name": "Baile",
+                "percent": 88,
+                "attentionNote": "Se necesita más atención… y más práctica en la pista."
+              },
+              {
+                "name": "Aventura",
+                "percent": 96,
+                "description": "Siempre hay sitio para una escapada."
+              },
+              {
+                "name": "Caos",
+                "percent": 100,
+                "description": "Perfectamente imperfectos."
+              }
             ]
           }
         }
       ],
-      "completion": { "type": "manual" }
+      "completion": {
+        "type": "manual"
+      }
     },
     {
       "id": "level-5",
       "order": 5,
-      "title": "The Connection",
-      "subtitle": "Más despacio",
+      "title": "La conexión",
+      "subtitle": "Lo que no cabe en un porcentaje",
       "type": "story",
       "active": true,
       "content": [
@@ -225,30 +343,61 @@
           "id": "c-1",
           "type": "text",
           "content": {
-            "text": "Dos caminos que empezaron en lugares distintos."
+            "presentation": "connection",
+            "eyebrow": "Después del análisis",
+            "text": "El laboratorio ya ha hablado: humor, química, comunicación, caos…\n\nBonitos números.\nPero hay algo que ninguna barra puede medir."
           }
         },
         {
           "id": "c-2",
           "type": "text",
           "content": {
-            "text": "Rumanía. España. Casualidades que no lo fueron tanto."
+            "eyebrow": "Dos mapas",
+            "text": "Rumanía. España.\nDos caminos que no tenían por qué cruzarse.\n\nY aun así, un día, detrás de una pantalla,\nempecé a sonreír como un tonto mirando el teléfono."
           }
         },
         {
           "id": "c-3",
           "type": "text",
           "content": {
-            "text": "A veces la conexión no se explica. Se siente."
+            "eyebrow": "La primera vez",
+            "text": "Luego llegaron las horas que se pasan volando.\nUn café. Dos vasos de agua con gas.\nUna mesa… y la certeza de que contigo el tiempo cambia de ritmo."
+          }
+        },
+        {
+          "id": "c-4",
+          "type": "text",
+          "content": {
+            "eyebrow": "Lo que fuimos construyendo",
+            "text": "Shopping y risas.\nBarcos, remos y luna.\nUna escapada.\nUn baile torpe… y tú, paciente, enseñándome un mundo nuevo.\n\nNo fue un golpe de suerte.\nFue elegirnos, una vez y otra."
+          }
+        },
+        {
+          "id": "c-5",
+          "type": "text",
+          "content": {
+            "eyebrow": "Lo invisible",
+            "text": "Porque la conexión no es solo química o aventura.\n\nEs poder hablar de verdad.\nEs pelear y volver.\nEs sentirte en casa… incluso cuando el mundo se pone raro."
+          }
+        },
+        {
+          "id": "c-6",
+          "type": "text",
+          "content": {
+            "eyebrow": "Para ti",
+            "text": "Mónica,\nesta conexión es una de las cosas más bonitas que me han pasado.\n\nMe devolviste una ilusión que llevaba mucho tiempo sin sentir.\nY todavía quiero seguir descubriéndola… contigo.",
+            "cta": "Seguir el viaje"
           }
         }
       ],
-      "completion": { "type": "all-scenes" }
+      "completion": {
+        "type": "all-scenes"
+      }
     },
     {
       "id": "level-6",
       "order": 6,
-      "title": "Dance",
+      "title": "Baile",
       "subtitle": "El mismo ritmo",
       "type": "interactive",
       "active": true,
@@ -257,18 +406,39 @@
           "id": "dance",
           "type": "animation",
           "content": {
-            "prompt": "Algunas personas simplemente encuentran el mismo ritmo.",
-            "afterPrompt": "Creo que nosotros lo encontramos.",
-            "targetTaps": 8
+            "introTitle": "¿Bailamos?",
+            "introBody": "Primero bachata, después salsa.\n\nEscucha el ritmo de fondo y toca cuando se encienda el paso. Como en la pista… juntos.",
+            "afterPrompt": "Creo que nosotros encontramos el mismo ritmo.",
+            "dances": [
+              {
+                "style": "bachata",
+                "title": "Bachata",
+                "prompt": "Sigue los pasos: 1 · 2 · 3 · tap",
+                "afterPrompt": "Qué bien se siente este ritmo juntos…",
+                "targetSteps": 12,
+                "bpm": 124
+              },
+              {
+                "style": "salsa",
+                "title": "Salsa",
+                "prompt": "Ahora salsa: 1 · 2 · 3 · … · 5 · 6 · 7",
+                "afterPrompt": "Creo que nosotros encontramos el mismo ritmo.",
+                "targetSteps": 16,
+                "bpm": 180
+              }
+            ]
           }
         }
       ],
-      "completion": { "type": "interaction-count", "threshold": 8 }
+      "completion": {
+        "type": "interaction-count",
+        "threshold": 8
+      }
     },
     {
       "id": "level-7",
       "order": 7,
-      "title": "Future",
+      "title": "El futuro",
       "subtitle": "Lo que podría venir",
       "type": "choice",
       "active": true,
@@ -307,17 +477,21 @@
           }
         }
       ],
-      "completion": { "type": "manual" }
+      "completion": {
+        "type": "manual"
+      }
     },
     {
       "id": "level-final",
       "order": 8,
       "title": "La pregunta",
-      "subtitle": "The Question",
+      "subtitle": "El momento",
       "type": "final",
       "active": true,
       "content": [],
-      "completion": { "type": "manual" }
+      "completion": {
+        "type": "manual"
+      }
     }
   ],
   "finalQuestion": {
@@ -332,7 +506,7 @@
         "¿Segurísima?",
         "Creo que deberías pensarlo otra vez.",
         "Esta decisión tiene consecuencias.",
-        "Error 404: buena decisión no encontrada."
+        "Error: buena decisión no encontrada."
       ],
       "movementEnabled": true,
       "movementIntensity": 0.7,
@@ -342,11 +516,16 @@
   "celebration": {
     "message": "Entonces es oficial.",
     "secondaryMessage": "Bienvenida a nuestra siguiente aventura.",
-    "effects": ["particles", "hearts", "confetti", "vibration"]
+    "effects": [
+      "particles",
+      "hearts",
+      "confetti",
+      "vibration"
+    ]
   },
   "finalReward": {
     "title": "Y ahora hay una última cosa",
-    "body": "Hay una cita esperándote — el detalle lo personalizas tú en el editor (Fase 4).",
+    "body": "Hay una cita esperándote. Puedes personalizar este mensaje desde el editor.",
     "cta": "Descubrir recompensa"
   }
 }

@@ -43,3 +43,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# recovery scratch (never ship)
+/content/experiences/recovery/
+*.tmp
+
+# local version archives (monica.json is the source of truth)
+/content/experiences/versions/

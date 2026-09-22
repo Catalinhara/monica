@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { parseBoldSegments } from "@/lib/display-text";
 
 type Props = {
   eyebrow?: string;
@@ -8,6 +9,22 @@ type Props = {
   align?: "left" | "center";
 };
 
+function RichText({ value }: { value: string }) {
+  return (
+    <>
+      {parseBoldSegments(value).map((part, index) =>
+        part.bold ? (
+          <strong key={index} className="font-semibold">
+            {part.text}
+          </strong>
+        ) : (
+          <span key={index}>{part.text}</span>
+        ),
+      )}
+    </>
+  );
+}
+
 export function PageHeader({
   eyebrow,
   title,
@@ -15,7 +32,8 @@ export function PageHeader({
   children,
   align = "left",
 }: Props) {
-  const alignClass = align === "center" ? "text-center items-center" : "text-left items-start";
+  const alignClass =
+    align === "center" ? "text-center items-center" : "text-left items-start";
 
   return (
     <header className={`flex flex-col gap-3 ${alignClass}`}>
@@ -25,11 +43,11 @@ export function PageHeader({
         </p>
       )}
       <h1 className="font-display text-4xl leading-[1.1] text-[var(--foreground)] sm:text-5xl">
-        {title}
+        <RichText value={title} />
       </h1>
       {description && (
         <p className="max-w-md text-base leading-relaxed text-[var(--muted)]">
-          {description}
+          <RichText value={description} />
         </p>
       )}
       {children}

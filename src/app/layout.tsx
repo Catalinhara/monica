@@ -23,9 +23,8 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Romantic Journey",
-  description:
-    "Experiencia web interactiva romántica — player experience y admin editor.",
+  title: "Para Mónica",
+  description: "Una historia hecha para ti.",
 };
 
 export const viewport: Viewport = {
