@@ -30,6 +30,21 @@ export type QuizQuestionContent = {
   feedback?: string;
 };
 
+/** One Q&A that he answers about her (post-quiz debate phase). */
+export type QuizAboutHerItem = {
+  id: string;
+  question: string;
+  answer: string;
+};
+
+/** Post-results phase of a quiz: her check/X on his answers about her. */
+export type QuizAboutHerConfig = {
+  title?: string;
+  intro?: string;
+  items: QuizAboutHerItem[];
+  closingNote?: string;
+};
+
 export type SortingItemContent = {
   id: string;
   label: string;

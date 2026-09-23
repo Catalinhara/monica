@@ -1,3 +1,5 @@
+import type { QuizAboutHerConfig } from "./content";
+
 export type LevelType =
   | "story"
   | "memory"
@@ -102,6 +104,8 @@ export type Level = {
   reward?: Reward;
   theme?: Partial<ThemeConfig>;
   active?: boolean;
+  /** Quiz-only: post-results “about her” Q&A with check/X scoring. */
+  aboutHer?: QuizAboutHerConfig;
 };
 
 export type LevelProgress = {

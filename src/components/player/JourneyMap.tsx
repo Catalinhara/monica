@@ -34,7 +34,7 @@ export function JourneyMap() {
           align="center"
           title={`Hola, ${experience.recipientName}`}
           description={
-            "La respuesta al enigma está al final del camino.\nDisfrútalo!"
+            "La respuesta al enigma está al final del camino.\n¡Disfrútalo!"
           }
         >
           <div className="mt-2 w-full max-w-sm">

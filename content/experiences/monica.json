@@ -3,7 +3,7 @@
   "title": "Viaje romántico",
   "recipientName": "Mónica",
   "status": "draft",
-  "version": 47,
+  "version": 50,
   "theme": {
     "id": "romantic-night",
     "name": "Noche romántica",
@@ -193,7 +193,7 @@
               }
             ],
             "correctOptionId": "c",
-            "feedbackCorrect": "Sí… ese momento tiene algo que todavía no sé explicar. 🌙✨",
+            "feedbackCorrect": "Sí… ese momento tiene algo que todavía no sé explicar. 🌙🔥",
             "feedbackWrong": "Podría ser cualquiera de ellos, pero hay uno que guardo de una forma especial. ❤️"
           }
         },
@@ -217,8 +217,8 @@
               }
             ],
             "correctOptionId": "b",
-            "feedbackCorrect": "Exactamente. 😂❤️ Nos encanta preparar nuestros planes y escapadas, pero siempre acabamos añadiendo alguna locura o cambiando algo por el camino.",
-            "feedbackWrong": "Casi… 😂 Nos encanta organizar nuestros planes y escapadas, pero ya sabes que siempre terminamos improvisando alguna cosa por el camino. ❤️"
+            "feedbackCorrect": "Exactamente❤️. Nos encanta preparar nuestros planes y escapadas, pero siempre acabamos añadiendo alguna locura o cambiando algo por el camino.",
+            "feedbackWrong": "Casi… Nos encanta organizar nuestros planes y escapadas, pero ya sabes que siempre terminamos improvisando alguna cosa por el camino. ❤️"
           }
         },
         {
@@ -249,7 +249,7 @@
           "id": "q-5",
           "type": "question",
           "content": {
-            "question": "Si alguien tuviera que hacer una película sobre nosotros, ¿qué sería lo más difícil de explicar? 😂",
+            "question": "Si alguien tuviera que hacer una película sobre nosotros, ¿qué sería lo más difícil de explicar?",
             "options": [
               {
                 "id": "a",
@@ -265,8 +265,8 @@
               }
             ],
             "correctOptionId": "c",
-            "feedbackCorrect": "Exactamente 😂. Visto desde fuera, algunas cosas no tendrían ningún sentido… pero nosotros sabemos perfectamente por qué acabamos ahí. ❤️",
-            "feedbackWrong": "También 😂, pero lo más difícil de explicar sería cómo, después de todas nuestras decisiones y aventuras, todo acaba teniendo sentido de alguna manera."
+            "feedbackCorrect": "Exactamente. Visto desde fuera, algunas cosas no tendrían ningún sentido… pero nosotros sabemos perfectamente por qué acabamos ahí. ❤️",
+            "feedbackWrong": "También, pero lo más difícil de explicar sería cómo, después de todas nuestras decisiones y aventuras, todo acaba teniendo sentido de alguna manera."
           }
         },
         {
@@ -289,7 +289,7 @@
               }
             ],
             "correctOptionId": "b",
-            "feedbackCorrect": "Sabía que esta no se te escapaba. 🍷😂",
+            "feedbackCorrect": "Sabía que esta no se te escapaba🍷.",
             "feedbackWrong": "JA. Tenemos una definición bastante creativa de \"una copa\". 🍷"
           }
         },
@@ -338,7 +338,7 @@
             ],
             "correctOptionId": "b",
             "feedbackCorrect": "Eso quería escuchar. Porque todavía nos quedan demasiadas cosas por vivir. ❤️",
-            "feedbackWrong": "Tentador… aunque yo prefiero pensar en todo lo que todavía nos queda por vivir. ✨"
+            "feedbackWrong": "Tentador… aunque yo prefiero pensar en todo lo que todavía nos queda por vivir."
           }
         },
         {
@@ -361,8 +361,8 @@
               }
             ],
             "correctOptionId": "b",
-            "feedbackCorrect": "Exactamente 😂. Puedes conocerme demasiado bien, pero lo peor es que ni siquiera me hace falta decir nada para que sepas que me pasa algo. ❤️",
-            "feedbackWrong": "No vas mal 😂, pero todavía te queda un poquito para tenerme completamente calado."
+            "feedbackCorrect": "Exactamente. Puedes conocerme demasiado bien, pero lo peor es que ni siquiera me hace falta decir nada para que sepas que me pasa algo. ❤️",
+            "feedbackWrong": "No vas mal, pero todavía te queda un poquito para tenerme completamente calado."
           }
         },
         {
@@ -390,6 +390,63 @@
           }
         }
       ],
+      "aboutHer": {
+        "title": "Ahora me toca a mi…",
+        "intro": "He pensado en 10 cosas sobre ti. Luego debatimos🤭",
+        "closingNote": "Seguiré disfrutando de descubrirte poco a poco, explorando cada rincón de ti, tanto por dentro como por fuera, aprendiendo cada uno de tus pequeños detalles, tus gustos y todo aquello que te hace ser tú…",
+        "items": [
+          {
+            "id": "about-1",
+            "question": "¿Cuál es tu color favorito?",
+            "answer": "Azul"
+          },
+          {
+            "id": "about-2",
+            "question": "¿Cuál es tu comida favorita?",
+            "answer": "Arroz con pollo"
+          },
+          {
+            "id": "about-3",
+            "question": "¿Cuál es tu película favorita?",
+            "answer": "\"Come, reza, ama\""
+          },
+          {
+            "id": "about-4",
+            "question": "¿Cuál diría que es tu propósito actual en la vida?…",
+            "answer": "Complicarme la mia jajaja"
+          },
+          {
+            "id": "about-5",
+            "question": "¿Qué creo que te preocupa más cuando se trata de tu aspecto?",
+            "answer": "Tu sonrisa"
+          },
+          {
+            "id": "about-6",
+            "question": "¿Qué lado tuyo creo que está más presente en tu forma de ver la vida?",
+            "answer": "Tu lado espiritual"
+          },
+          {
+            "id": "about-7",
+            "question": "¿Qué tema podría hacer que perdiéramos fácilmente la noción del tiempo hablando?",
+            "answer": "Psicología, filosofía...o hablar de nuestros exes jajaja"
+          },
+          {
+            "id": "about-8",
+            "question": "¿Qué creo que haces cuando algo te preocupa?",
+            "answer": "Darle muchas vueltas"
+          },
+          {
+            "id": "about-9",
+            "question": "Como seria tu domingo perfecto?",
+            "answer": "Ruta en la naturaleza"
+          },
+          {
+            "id": "about-10",
+            "question": "¿Qué creo que prefieres para desconectar?",
+            "answer": "Escuchar musica y bailar"
+          }
+        ]
+      },
       "completion": {
         "type": "manual"
       }
@@ -709,8 +766,8 @@
     {
       "id": "level-final",
       "order": 8,
-      "title": "La propuesta",
-      "subtitle": "Ha llegado el momento de resolver el enigma...",
+      "title": "El Enigma",
+      "subtitle": "Es el momento… tengo una propuesta.",
       "type": "final",
       "active": true,
       "content": [],
@@ -749,7 +806,7 @@
     }
   },
   "celebration": {
-    "eyebrow": "Celebración",
+    "eyebrow": "¡Has ganado! Enigma resuelto, enhorabuena ❤️",
     "message": "**Entonses** es oficial.",
     "secondaryMessage": "Bienvenida a nuestra siguiente aventura. Nuestra historia acaba de empezar...oficialmente",
     "achievementLabel": "NUEVO LOGRO",

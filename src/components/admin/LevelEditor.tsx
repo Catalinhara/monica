@@ -13,6 +13,7 @@ import {
 } from "./PuzzleSlotsEditor";
 import { ChoiceEditor } from "./ChoiceEditor";
 import { FinalEditor } from "./FinalEditor";
+import { QuizAboutHerEditor } from "./QuizAboutHerEditor";
 
 const LEVEL_TYPES: LevelType[] = [
   "story",
@@ -75,6 +76,7 @@ export function LevelEditor() {
   const isPuzzleLevel = level.type === "sorting";
   const isChoiceLevel = level.type === "choice";
   const isFinalLevel = level.type === "final";
+  const isQuizLevel = level.type === "quiz";
 
   function applyScenes(nextScenes: Scene[]) {
     updateLevel(level!.id, { content: nextScenes });
@@ -139,7 +141,9 @@ export function LevelEditor() {
               ? "Texto del futuro, subtítulo del premio y tarjetas con imagen."
               : isFinalLevel
                 ? "Metadatos del nivel, pregunta Sí/No, celebración, música y recompensa."
-                : "Metadatos, imagen por escena y JSON avanzado."}
+                : isQuizLevel
+                  ? "Preguntas del quiz (JSON) y la fase «Sobre ella» con ✓ / ✗."
+                  : "Metadatos, imagen por escena y JSON avanzado."}
         </p>
       </header>
 
@@ -193,6 +197,11 @@ export function LevelEditor() {
         <ChoiceEditor scenes={scenes} onChange={applyScenes} />
       ) : isFinalLevel ? (
         <FinalEditor embedded />
+      ) : isQuizLevel ? (
+        <QuizAboutHerEditor
+          level={level}
+          onChange={(aboutHer) => updateLevel(level.id, { aboutHer })}
+        />
       ) : (
         scenes.length > 0 && (
           <section className="space-y-4 rounded-[var(--radius-lg)] border border-[var(--border)] bg-black/20 p-4">
