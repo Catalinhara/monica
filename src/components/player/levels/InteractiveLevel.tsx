@@ -13,7 +13,6 @@ import { LevelShell } from "../LevelShell";
 import { normalizeDisplayText } from "@/lib/display-text";
 import {
   getActiveRhythmLoop,
-  playStepTap,
   RHYTHM_PATTERNS,
   startRhythmLoop,
   stopRhythmLoop,
@@ -139,7 +138,6 @@ export function InteractiveLevel({
     const judgment = getActiveRhythmLoop()?.judgeTap() ?? "miss";
 
     if (judgment === "hit") {
-      playStepTap(muted);
       setHits((h) => Math.min(target, h + 1));
       setFeedback("good");
     } else {

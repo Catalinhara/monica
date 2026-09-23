@@ -31,8 +31,11 @@ export function JourneyMap() {
         </div>
 
         <PageHeader
+          align="center"
           title={`Hola, ${experience.recipientName}`}
-          description="Te estaba esperando. Aquí empieza tu experiencia, suerte!"
+          description={
+            "La respuesta al enigma está al final del camino.\nDisfrútalo!"
+          }
         >
           <div className="mt-2 w-full max-w-sm">
             <p className="mb-1.5 text-sm text-[var(--muted)]">

@@ -709,8 +709,8 @@
     {
       "id": "level-final",
       "order": 8,
-      "title": "Mi propuesta",
-      "subtitle": "Ha llegado el momento...",
+      "title": "La propuesta",
+      "subtitle": "Ha llegado el momento de resolver el enigma...",
       "type": "final",
       "active": true,
       "content": [],

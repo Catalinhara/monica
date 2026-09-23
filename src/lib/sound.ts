@@ -247,7 +247,8 @@ export function startRhythmLoop(
 
   const scheduled: ScheduledBeat[] = [];
   let musicEl: HTMLAudioElement | null = null;
-  let usingTrack = false;
+  // If a track is configured, never play synth tap cues (even while it loads).
+  let usingTrack = Boolean(options.musicSrc);
 
   if (!ctx) {
     const handle: RhythmLoopHandle = {
@@ -316,9 +317,8 @@ export function startRhythmLoop(
       const hit =
         style === "bachata" ? bachataHits[step] : salsaHits[step];
 
-      // Keep light step cues even with a track so the user hears when to tap.
-      const cueGain = usingTrack ? 0.55 : 1;
-      if (hit) playHit(ctx, hit, nextTime, muted, cueGain);
+      // With a real track, only the song plays (no synthetic tap/step cues).
+      if (!usingTrack && hit) playHit(ctx, hit, nextTime, muted, 1);
 
       if (!usingTrack && step === 0) {
         scheduleMusicBed(ctx, style, nextTime, muted);

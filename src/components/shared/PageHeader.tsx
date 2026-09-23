@@ -46,7 +46,7 @@ export function PageHeader({
         <RichText value={title} />
       </h1>
       {description && (
-        <p className="max-w-md text-base leading-relaxed text-[var(--muted)]">
+        <p className="max-w-md whitespace-pre-line text-base leading-relaxed text-[var(--muted)]">
           <RichText value={description} />
         </p>
       )}

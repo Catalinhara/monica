@@ -148,7 +148,7 @@ export function CelebrationScreen() {
             }
             description={
               reward?.body ??
-              "Para más detalles contacte con su novio."
+              "Hay un premio esperándote..."
             }
           />
 
@@ -164,6 +164,14 @@ export function CelebrationScreen() {
               />
             </div>
           )}
+
+          <p className="max-w-sm text-center text-xs leading-relaxed text-[var(--muted)]">
+            *Para más detalles consulta tu{" "}
+            <strong className="font-semibold text-[var(--foreground)]">
+              novio
+            </strong>
+            ...
+          </p>
 
           <div className="w-full max-w-sm">
             <Button className="w-full" onClick={openMap}>
