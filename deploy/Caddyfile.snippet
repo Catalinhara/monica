@@ -1,11 +1,20 @@
-# Pegar al FINAL del Caddyfile de la VPS.
-# No modificar los site blocks de los otros proyectos.
+# Pegar al FINAL de /opt/artizanale/deploy/Caddyfile
+# Requiere: contenedor enigmademonica en la red artizanale_default
+# (docker-compose.yml de romantic-journey ya la declara como external).
 
 enigmademonica.es {
 	redir https://www.enigmademonica.es{uri} permanent
 }
 
 www.enigmademonica.es {
-	encode gzip
-	reverse_proxy 127.0.0.1:3847
+	encode gzip zstd
+
+	handle {
+		reverse_proxy enigmademonica:3000
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+		-Server
+	}
 }

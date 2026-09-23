@@ -4,7 +4,7 @@ services:
     container_name: enigmademonica
     restart: unless-stopped
     ports:
-      # Solo localhost: Caddy hace el TLS y el proxy. No exponer 3847 a Internet.
+      # Solo localhost (debug / fallback). Caddy habla por la red Docker.
       - "127.0.0.1:3847:3000"
     environment:
       NODE_ENV: production
@@ -16,3 +16,11 @@ services:
       - ./public/assets:/app/public/assets
       - ./public/prizes:/app/public/prizes
       - ./public/audio:/app/public/audio
+    networks:
+      - default
+      # Misma red que artizanale-caddy (como charad-frontend)
+      - artizanale_default
+
+networks:
+  artizanale_default:
+    external: true
