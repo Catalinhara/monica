@@ -135,7 +135,7 @@ export function FinalLevel({ experience, level, onAccept, onExit }: Props) {
         {step === 1 && (
           <>
             <p className="font-display text-3xl leading-snug sm:text-4xl">
-              Y este no tiene respuesta correcta.
+            Y este quizás no tenga respuesta correcta…
             </p>
             <Button
               onClick={() => {
